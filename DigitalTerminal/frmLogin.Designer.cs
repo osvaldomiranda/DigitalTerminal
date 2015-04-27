@@ -1,6 +1,6 @@
 ﻿namespace DigitalTerminal
 {
-    partial class Form1
+    partial class frmLogin
     {
         /// <summary>
         /// Variable del diseñador requerida.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
             this.txtNombreUsuario = new System.Windows.Forms.TextBox();
             this.txtContrasena = new System.Windows.Forms.TextBox();
             this.btnIngresar = new System.Windows.Forms.Button();
