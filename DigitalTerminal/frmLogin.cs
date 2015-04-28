@@ -21,5 +21,11 @@ namespace DigitalTerminal
             txtContrasena.PasswordChar = '*';
 
         }
+
+        private void btnIngresar_Click(object sender, EventArgs e)
+        {
+            Login_controller log = new Login_controller();
+            log.validPass(txtNombreUsuario.Text, txtContrasena.Text);
+        }
     }
 }
