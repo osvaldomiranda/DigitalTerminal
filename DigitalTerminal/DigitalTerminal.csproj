@@ -61,6 +61,7 @@
     </Compile>
     <Compile Include="Login.cs" />
     <Compile Include="Login_controller.cs" />
+    <Compile Include="Migrations.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmDigitalTerminal.resx">
