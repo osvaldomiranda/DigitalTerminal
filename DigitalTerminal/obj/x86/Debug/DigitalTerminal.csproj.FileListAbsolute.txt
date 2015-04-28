@@ -6,3 +6,4 @@ c:\users\mauricio\documents\visual studio 2010\Projects\DigitalTerminal\DigitalT
 c:\users\mauricio\documents\visual studio 2010\Projects\DigitalTerminal\DigitalTerminal\obj\x86\Debug\DigitalTerminal.pdb
 C:\Users\Mauricio\Documents\Visual Studio 2010\Projects\DigitalTerminal\DigitalTerminal\obj\x86\Debug\DigitalTerminal.csprojResolveAssemblyReference.cache
 C:\Users\Mauricio\Documents\Visual Studio 2010\Projects\DigitalTerminal\DigitalTerminal\obj\x86\Debug\DigitalTerminal.frmLogin.resources
+C:\Users\Mauricio\Documents\Visual Studio 2010\Projects\DigitalTerminal\DigitalTerminal\obj\x86\Debug\DigitalTerminal.frmDigitalTerminal.resources

@@ -21,5 +21,16 @@ namespace DigitalTerminal
             txtContrasena.PasswordChar = '*';
 
         }
+
+        private void btnIngresar_Click(object sender, EventArgs e)
+        {
+            frmDigitalTerminal dt = new frmDigitalTerminal();
+            dt.Show();
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
+        }
     }
 }
