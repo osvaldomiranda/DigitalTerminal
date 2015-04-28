@@ -46,7 +46,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <Compile Include="Connect.cs" />
+=======
+    <Compile Include="frmDigitalTerminal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDigitalTerminal.Designer.cs">
+      <DependentUpon>frmDigitalTerminal.cs</DependentUpon>
+    </Compile>
+>>>>>>> Mauricio
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -57,6 +66,9 @@
     <Compile Include="Login_controller.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmDigitalTerminal.resx">
+      <DependentUpon>frmDigitalTerminal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
