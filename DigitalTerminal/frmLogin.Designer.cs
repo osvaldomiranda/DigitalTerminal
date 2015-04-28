@@ -45,12 +45,12 @@
             // 
             // txtContrasena
             // 
-<<<<<<< HEAD
+
             this.txtContrasena.Location = new System.Drawing.Point(83, 193);
-=======
+
             this.txtContrasena.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtContrasena.Location = new System.Drawing.Point(80, 193);
->>>>>>> Mauricio
+
             this.txtContrasena.Multiline = true;
             this.txtContrasena.Name = "txtContrasena";
             this.txtContrasena.Size = new System.Drawing.Size(278, 13);

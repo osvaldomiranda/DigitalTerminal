@@ -46,16 +46,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
     <Compile Include="Connect.cs" />
-=======
     <Compile Include="frmDigitalTerminal.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmDigitalTerminal.Designer.cs">
       <DependentUpon>frmDigitalTerminal.cs</DependentUpon>
     </Compile>
->>>>>>> Mauricio
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -71,6 +68,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
