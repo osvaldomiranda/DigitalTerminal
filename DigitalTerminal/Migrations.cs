@@ -11,6 +11,35 @@ namespace DigitalTerminal
     {
         public void migrate()
         {
+            //**********************************************
+            // Base de Datos
+            string connStr = "Server=localhost;Port=5432;User Id=postgres;Password=enter;";
+
+            OdbcConnection conDB = new OdbcConnection(connStr);
+            OdbcCommand createDB = new OdbcCommand();
+            createDB.Connection = conDB;
+            createDB.CommandText = "CREATE DATABASE IF NOT EXIST digitalterminal"
+                                    + "WITH OWNER = postgres"
+                                    + "ENCODING = 'UTF8'"
+                                    + "TABLESPACE = pg_default"
+                                    + "CONNECTION LIMIT = -1;";
+
+            try
+            {
+                conDB.Open();
+                createDB.ExecuteNonQuery();
+            }
+            catch (OdbcException ex)
+            {
+                Console.WriteLine(ex.Message + "\n\n" + "*********************StackTrace: \n\n" + ex.StackTrace);  
+            }
+            conDB.Close();
+
+
+            //**********************************************
+            // Tablas
+
+
             Connect con = new Connect();
             OdbcConnection conexion = con.getConnect();
 
@@ -29,7 +58,15 @@ namespace DigitalTerminal
             ");" +
             "ALTER TABLE \"user\"" +
             "OWNER TO postgres;";
-            createUser.ExecuteNonQuery();
+
+            try
+            {
+                createUser.ExecuteNonQuery();
+            }
+            catch (OdbcException ex)
+            {
+                Console.WriteLine(ex.Message + "\n\n" + "*********************StackTrace: \n\n" + ex.StackTrace);
+            }
             conexion.Close();
         }
     }
