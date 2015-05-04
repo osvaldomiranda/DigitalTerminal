@@ -28,8 +28,7 @@ namespace DigitalTerminal
             Login_controller log = new Login_controller();
             log.validPass(txtNombreUsuario.Text, txtContrasena.Text);
 
-            frmDigitalTerminal dt = new frmDigitalTerminal();
-            dt.Show();
+
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Data;
 using System.Data.Odbc;
+using System.Windows.Forms;
 
 namespace DigitalTerminal
 {
@@ -12,7 +13,7 @@ namespace DigitalTerminal
         public OdbcConnection getConnect()
         {
 
-            String stringConn = "Driver={PostgreSQL UNICODE};Server=127.0.0.1;Port=5432;Database=digitalterminal;Uid=postgres;Pwd=preciosodt3;";
+            String stringConn = "Driver={PostgreSQL UNICODE};Server=localhost;Port=5432;Database=digitalterminal;Uid=postgres;Pwd=preciosodt3;";
             OdbcConnection conn = new OdbcConnection(stringConn);
             try
             {
@@ -20,8 +21,11 @@ namespace DigitalTerminal
             }
             catch (OdbcException ex)
             {
+                MessageBox.Show("Problemas al conectar a la base datos", "Error de Conexion", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Console.WriteLine(ex.Message + "\n\n" + "*********************StackTrace: \n\n" + ex.StackTrace);
+                Environment.Exit(0);
                 return null;
+
             }
             return conn;
         }
