@@ -18,7 +18,8 @@ namespace DigitalTerminal
 
         private void frmDigitalTerminal_Load(object sender, EventArgs e)
         {
-
+            dtgwDetalle.Rows.Add("1","1234","CUADERNO DE 100 HOJAS","1","1000","0","1000");        
+ 
         }
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
@@ -31,7 +32,13 @@ namespace DigitalTerminal
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
         {
             Environment.Exit(0);
         }

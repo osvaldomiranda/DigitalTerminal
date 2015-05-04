@@ -19,6 +19,9 @@ namespace DigitalTerminal
                 MessageBoxIcon.Question);
 
                 // LLAMADO A LA PANTALLA SIGUIENTE
+
+                frmDigitalTerminal dt = new frmDigitalTerminal();
+                dt.Show();
             }
             else
             {

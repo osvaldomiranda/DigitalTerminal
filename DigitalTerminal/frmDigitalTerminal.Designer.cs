@@ -29,172 +29,218 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.tblpDigitalTerminal = new System.Windows.Forms.TableLayoutPanel();
-            this.dtgwDigitalTerminal = new System.Windows.Forms.DataGridView();
-            this.col1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.tblpIzquierdo = new System.Windows.Forms.TableLayoutPanel();
+            this.dtgwDetalle = new System.Windows.Forms.DataGridView();
+            this.item = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.plu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descuento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lblTipoDoc = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.tblpDigitalTerminal.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgwDigitalTerminal)).BeginInit();
+            this.tblpDerecho = new System.Windows.Forms.TableLayoutPanel();
+            this.btSalir = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
+            this.tblpIzquierdo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgwDetalle)).BeginInit();
+            this.tblpDerecho.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tblpDigitalTerminal
+            // splitContainer1
             // 
-            this.tblpDigitalTerminal.ColumnCount = 2;
-            this.tblpDigitalTerminal.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
-            this.tblpDigitalTerminal.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tblpDigitalTerminal.Controls.Add(this.dtgwDigitalTerminal, 0, 1);
-            this.tblpDigitalTerminal.Controls.Add(this.lblTipoDoc, 0, 0);
-            this.tblpDigitalTerminal.Controls.Add(this.button1, 1, 0);
-            this.tblpDigitalTerminal.ForeColor = System.Drawing.Color.Black;
-            this.tblpDigitalTerminal.Location = new System.Drawing.Point(0, 2);
-            this.tblpDigitalTerminal.Name = "tblpDigitalTerminal";
-            this.tblpDigitalTerminal.RowCount = 2;
-            this.tblpDigitalTerminal.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.75904F));
-            this.tblpDigitalTerminal.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85.24096F));
-            this.tblpDigitalTerminal.Size = new System.Drawing.Size(1217, 628);
-            this.tblpDigitalTerminal.TabIndex = 0;
-            this.tblpDigitalTerminal.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
+            this.splitContainer1.BackColor = System.Drawing.Color.Transparent;
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Name = "splitContainer1";
             // 
-            // dtgwDigitalTerminal
+            // splitContainer1.Panel1
             // 
-            this.dtgwDigitalTerminal.BackgroundColor = System.Drawing.Color.White;
-            this.dtgwDigitalTerminal.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dtgwDigitalTerminal.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.dtgwDigitalTerminal.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.splitContainer1.Panel1.Controls.Add(this.tblpIzquierdo);
+            this.splitContainer1.Size = new System.Drawing.Size(1157, 513);
+            this.splitContainer1.SplitterDistance = 646;
+            this.splitContainer1.TabIndex = 0;
+            // 
+            // tblpIzquierdo
+            // 
+            this.tblpIzquierdo.BackColor = System.Drawing.Color.Transparent;
+            this.tblpIzquierdo.ColumnCount = 1;
+            this.tblpIzquierdo.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tblpIzquierdo.Controls.Add(this.dtgwDetalle, 0, 1);
+            this.tblpIzquierdo.Controls.Add(this.tblpDerecho, 0, 0);
+            this.tblpIzquierdo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tblpIzquierdo.Location = new System.Drawing.Point(0, 0);
+            this.tblpIzquierdo.Name = "tblpIzquierdo";
+            this.tblpIzquierdo.RowCount = 3;
+            this.tblpIzquierdo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tblpIzquierdo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 75F));
+            this.tblpIzquierdo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tblpIzquierdo.Size = new System.Drawing.Size(646, 513);
+            this.tblpIzquierdo.TabIndex = 0;
+            // 
+            // dtgwDetalle
+            // 
+            this.dtgwDetalle.AllowUserToOrderColumns = true;
+            this.dtgwDetalle.BackgroundColor = System.Drawing.Color.White;
+            this.dtgwDetalle.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dtgwDetalle.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dtgwDetalle.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.LawnGreen;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgwDigitalTerminal.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dtgwDigitalTerminal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgwDigitalTerminal.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.col1,
+            this.dtgwDetalle.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dtgwDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgwDetalle.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.item,
             this.plu,
-            this.descripcion,
+            this.nombre,
             this.cantidad,
+            this.precio,
             this.descuento,
             this.total});
-            this.dtgwDigitalTerminal.Cursor = System.Windows.Forms.Cursors.Default;
-            this.dtgwDigitalTerminal.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dtgwDigitalTerminal.GridColor = System.Drawing.Color.OrangeRed;
-            this.dtgwDigitalTerminal.Location = new System.Drawing.Point(3, 95);
-            this.dtgwDigitalTerminal.MultiSelect = false;
-            this.dtgwDigitalTerminal.Name = "dtgwDigitalTerminal";
-            this.dtgwDigitalTerminal.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgwDigitalTerminal.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dtgwDigitalTerminal.Size = new System.Drawing.Size(724, 530);
-            this.dtgwDigitalTerminal.TabIndex = 0;
-            this.dtgwDigitalTerminal.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgwDigitalTerminal_CellContentClick);
+            this.dtgwDetalle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dtgwDetalle.Location = new System.Drawing.Point(3, 43);
+            this.dtgwDetalle.Name = "dtgwDetalle";
+            this.dtgwDetalle.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgwDetalle.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dtgwDetalle.RowHeadersVisible = false;
+            this.dtgwDetalle.Size = new System.Drawing.Size(640, 348);
+            this.dtgwDetalle.TabIndex = 0;
+            this.dtgwDetalle.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // col1
+            // item
             // 
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.col1.DefaultCellStyle = dataGridViewCellStyle2;
-            this.col1.HeaderText = "ITEM";
-            this.col1.Name = "col1";
-            this.col1.Width = 50;
+            this.item.Frozen = true;
+            this.item.HeaderText = "ITEM";
+            this.item.Name = "item";
+            this.item.Width = 40;
             // 
             // plu
             // 
+            this.plu.Frozen = true;
             this.plu.HeaderText = "PLU";
             this.plu.Name = "plu";
-            this.plu.Width = 51;
+            this.plu.Width = 50;
             // 
-            // descripcion
+            // nombre
             // 
-            this.descripcion.HeaderText = "DESCRIPCIÓN";
-            this.descripcion.Name = "descripcion";
-            this.descripcion.Width = 300;
+            this.nombre.Frozen = true;
+            this.nombre.HeaderText = "NOMBRE";
+            this.nombre.Name = "nombre";
+            this.nombre.Width = 300;
             // 
             // cantidad
             // 
+            this.cantidad.Frozen = true;
             this.cantidad.HeaderText = "CANTIDAD";
             this.cantidad.Name = "cantidad";
-            this.cantidad.Width = 65;
+            // 
+            // precio
+            // 
+            this.precio.Frozen = true;
+            this.precio.HeaderText = "PRECIO";
+            this.precio.Name = "precio";
+            this.precio.Width = 60;
             // 
             // descuento
             // 
+            this.descuento.Frozen = true;
             this.descuento.HeaderText = "%";
             this.descuento.Name = "descuento";
             this.descuento.Width = 50;
             // 
             // total
             // 
+            this.total.Frozen = true;
             this.total.HeaderText = "TOTAL";
             this.total.Name = "total";
-            this.total.Width = 50;
+            this.total.Width = 70;
             // 
-            // lblTipoDoc
+            // tblpDerecho
             // 
-            this.lblTipoDoc.AutoSize = true;
-            this.lblTipoDoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTipoDoc.ForeColor = System.Drawing.Color.DarkGreen;
-            this.lblTipoDoc.Location = new System.Drawing.Point(3, 0);
-            this.lblTipoDoc.Name = "lblTipoDoc";
-            this.lblTipoDoc.Size = new System.Drawing.Size(291, 24);
-            this.lblTipoDoc.TabIndex = 1;
-            this.lblTipoDoc.Text = "FACTURA ELECTRONICA -33";
+            this.tblpDerecho.ColumnCount = 4;
+            this.tblpDerecho.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tblpDerecho.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tblpDerecho.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tblpDerecho.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tblpDerecho.Controls.Add(this.btSalir, 0, 0);
+            this.tblpDerecho.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tblpDerecho.Location = new System.Drawing.Point(3, 3);
+            this.tblpDerecho.Name = "tblpDerecho";
+            this.tblpDerecho.RowCount = 1;
+            this.tblpDerecho.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tblpDerecho.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
+            this.tblpDerecho.Size = new System.Drawing.Size(640, 34);
+            this.tblpDerecho.TabIndex = 1;
             // 
-            // button1
+            // btSalir
             // 
-            this.button1.Location = new System.Drawing.Point(733, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Salir";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btSalir.BackgroundImage = global::DigitalTerminal.Properties.Resources.btSalir;
+            this.btSalir.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btSalir.ForeColor = System.Drawing.Color.White;
+            this.btSalir.Location = new System.Drawing.Point(3, 3);
+            this.btSalir.Name = "btSalir";
+            this.btSalir.Size = new System.Drawing.Size(154, 28);
+            this.btSalir.TabIndex = 0;
+            this.btSalir.Text = "Salir";
+            this.btSalir.UseVisualStyleBackColor = true;
+            this.btSalir.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // frmDigitalTerminal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(831, 435);
-            this.Controls.Add(this.tblpDigitalTerminal);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.BackColor = System.Drawing.Color.Gainsboro;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(1157, 513);
+            this.Controls.Add(this.splitContainer1);
+            this.DoubleBuffered = true;
             this.Name = "frmDigitalTerminal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmDigitalTerminal";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmDigitalTerminal_Load);
-            this.tblpDigitalTerminal.ResumeLayout(false);
-            this.tblpDigitalTerminal.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgwDigitalTerminal)).EndInit();
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
+            this.tblpIzquierdo.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dtgwDetalle)).EndInit();
+            this.tblpDerecho.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TableLayoutPanel tblpDigitalTerminal;
-        private System.Windows.Forms.DataGridView dtgwDigitalTerminal;
-        private System.Windows.Forms.DataGridViewTextBoxColumn col1;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.TableLayoutPanel tblpIzquierdo;
+        private System.Windows.Forms.DataGridView dtgwDetalle;
+        private System.Windows.Forms.TableLayoutPanel tblpDerecho;
+        private System.Windows.Forms.Button btSalir;
+        private System.Windows.Forms.DataGridViewTextBoxColumn item;
         private System.Windows.Forms.DataGridViewTextBoxColumn plu;
-        private System.Windows.Forms.DataGridViewTextBoxColumn descripcion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn cantidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn precio;
         private System.Windows.Forms.DataGridViewTextBoxColumn descuento;
         private System.Windows.Forms.DataGridViewTextBoxColumn total;
-        private System.Windows.Forms.Label lblTipoDoc;
-        private System.Windows.Forms.Button button1;
+
 
 
     }
