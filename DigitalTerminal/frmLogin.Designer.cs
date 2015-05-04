@@ -45,12 +45,8 @@
             // 
             // txtContrasena
             // 
-
-            this.txtContrasena.Location = new System.Drawing.Point(83, 193);
-
             this.txtContrasena.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtContrasena.Location = new System.Drawing.Point(80, 193);
-
             this.txtContrasena.Multiline = true;
             this.txtContrasena.Name = "txtContrasena";
             this.txtContrasena.Size = new System.Drawing.Size(278, 13);
@@ -59,6 +55,7 @@
             // btnIngresar
             // 
             this.btnIngresar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnIngresar.BackgroundImage")));
+            this.btnIngresar.FlatAppearance.BorderSize = 0;
             this.btnIngresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnIngresar.Location = new System.Drawing.Point(82, 236);
             this.btnIngresar.Name = "btnIngresar";
@@ -70,6 +67,7 @@
             // btnCancelar
             // 
             this.btnCancelar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCancelar.BackgroundImage")));
+            this.btnCancelar.FlatAppearance.BorderSize = 0;
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.Location = new System.Drawing.Point(243, 236);
             this.btnCancelar.Name = "btnCancelar";
