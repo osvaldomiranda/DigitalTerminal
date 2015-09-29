@@ -18,7 +18,7 @@ namespace Vista
             
         public frmBuscaCliente(frmPuntoVenta frmPOS)
         {
-            InitializeComponent();
+           InitializeComponent();
            frm = frmPOS;
 
         }

@@ -133,6 +133,16 @@ namespace Vista.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap add_user_3_48 {
+            get {
+                object obj = ResourceManager.GetObject("add-user-3-48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap agregar_producto {
             get {
                 object obj = ResourceManager.GetObject("agregar_producto", resourceCulture);
@@ -166,6 +176,26 @@ namespace Vista.Properties {
         internal static System.Drawing.Bitmap check_mark_11_32 {
             get {
                 object obj = ResourceManager.GetObject("check-mark-11-32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap delete_32 {
+            get {
+                object obj = ResourceManager.GetObject("delete-32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap edit_5_32 {
+            get {
+                object obj = ResourceManager.GetObject("edit-5-32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -213,6 +243,36 @@ namespace Vista.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap globe_48 {
+            get {
+                object obj = ResourceManager.GetObject("globe-48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap globe_48__1_ {
+            get {
+                object obj = ResourceManager.GetObject("globe-48 (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap globe_48__2_ {
+            get {
+                object obj = ResourceManager.GetObject("globe-48 (2)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap plus_5_16 {
             get {
                 object obj = ResourceManager.GetObject("plus-5-16", resourceCulture);
@@ -246,6 +306,16 @@ namespace Vista.Properties {
         internal static System.Drawing.Bitmap printer_64 {
             get {
                 object obj = ResourceManager.GetObject("printer-64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap product_48 {
+            get {
+                object obj = ResourceManager.GetObject("product-48", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -326,6 +396,16 @@ namespace Vista.Properties {
         internal static System.Drawing.Bitmap settings_5_32 {
             get {
                 object obj = ResourceManager.GetObject("settings-5-32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap settings_7_48 {
+            get {
+                object obj = ResourceManager.GetObject("settings-7-48", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

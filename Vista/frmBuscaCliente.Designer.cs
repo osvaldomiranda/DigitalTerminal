@@ -184,6 +184,7 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.Size = new System.Drawing.Size(623, 143);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView1_KeyDown);
@@ -206,7 +207,7 @@
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 28.31858F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 71.68142F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 43F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 33F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 34F));
             this.tableLayoutPanel4.Controls.Add(this.buttonAcepta, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.btnClientesSalir, 0, 0);
             this.tableLayoutPanel4.Location = new System.Drawing.Point(4, 288);
@@ -226,7 +227,7 @@
             this.buttonAcepta.ForeColor = System.Drawing.Color.ForestGreen;
             this.buttonAcepta.Image = global::Vista.Properties.Resources.check_mark_11_32;
             this.buttonAcepta.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonAcepta.Location = new System.Drawing.Point(92, 6);
+            this.buttonAcepta.Location = new System.Drawing.Point(91, 6);
             this.buttonAcepta.Margin = new System.Windows.Forms.Padding(6);
             this.buttonAcepta.Name = "buttonAcepta";
             this.buttonAcepta.Size = new System.Drawing.Size(80, 63);
@@ -249,7 +250,7 @@
             this.btnClientesSalir.Location = new System.Drawing.Point(6, 6);
             this.btnClientesSalir.Margin = new System.Windows.Forms.Padding(6);
             this.btnClientesSalir.Name = "btnClientesSalir";
-            this.btnClientesSalir.Size = new System.Drawing.Size(74, 63);
+            this.btnClientesSalir.Size = new System.Drawing.Size(73, 63);
             this.btnClientesSalir.TabIndex = 18;
             this.btnClientesSalir.Text = "SALIR";
             this.btnClientesSalir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;

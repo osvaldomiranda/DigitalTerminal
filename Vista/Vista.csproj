@@ -253,6 +253,30 @@
       <Name>Modelo</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add-user-3-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\product-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\globe-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\globe-48 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\globe-48 %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\settings-7-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit-5-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete-32.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

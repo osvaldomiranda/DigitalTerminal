@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Modelo;
+using System.Globalization;
 
 namespace Vista
 {
@@ -22,15 +23,6 @@ namespace Vista
             
         }
 
-        private void tblpMenu_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void btnBuscaCliente_Click(object sender, EventArgs e)
         {
@@ -63,8 +55,7 @@ namespace Vista
             }
             if (e.KeyData == Keys.F7)
             {
-                new frmBuscaProductos(this).ShowDialog();
-               
+                new frmBuscaProductos(this).ShowDialog();             
             }
 
             if (e.KeyData == Keys.F9)
@@ -84,42 +75,20 @@ namespace Vista
         }
 
 
-        private void dtgwDetalle_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
         
         private void button4_Click(object sender, EventArgs e)
         {
-           n = this.dtgwDetalle.Rows.Add();
-           this.dtgwDetalle.Rows[n].Cells[0].Value = "-";
-           this.dtgwDetalle.Rows[n].Cells[1].Value =  n+1;
-           this.dtgwDetalle.Rows[n].Cells[2].Value = "120658";
-           this.dtgwDetalle.Rows[n].Cells[3].Value = "PRODUCTO DE PRUEBA 1 58594256854";
-           this.dtgwDetalle.Rows[n].Cells[4].Value = "1000";
-           this.dtgwDetalle.Rows[n].Cells[5].Value = "1";
-           this.dtgwDetalle.Rows[n].Cells[6].Value = "0";
-           this.dtgwDetalle.Rows[n].Cells[7].Value =  "1000";
-           dtgwDetalle.Focus();
-           dtgwDetalle.CurrentCell =this.dtgwDetalle.Rows[n].Cells[5];
-
+            this.textBoxCodBarra.Select();
+            frmBuscaProductos frmbuscaprod = new frmBuscaProductos(this);
+            frmbuscaprod.ShowDialog();
         }
 
      public void frmPuntoVenta_Load(object sender, EventArgs e)
         {
-            this.textBoxRut.Select(); 
+            this.textBoxRut.Select();
         }
 
 
-     private void dtgwDetalle_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-     {
-
-    }
 
      private void dtgwDetalle_CellEndEdit(object sender, DataGridViewCellEventArgs e)
      {
@@ -152,9 +121,8 @@ namespace Vista
                      labelCiudad.Text = dataTableCliente.Rows[0][8].ToString();
                      labelComuna.Text = dataTableCliente.Rows[0][11].ToString();              
                      labelTelefono.Text = dataTableCliente.Rows[0][6].ToString();
-                     buttonBuscaProducto.Select();
                      textBoxRut.Enabled = false;
-
+                     textBoxCodBarra.Select();
                  }
                  else
                  {
@@ -174,17 +142,60 @@ namespace Vista
 
      private void textBoxRut_Validated(object sender, EventArgs e)
      {
-         //textBoxRut.Text = new MetodosComunes().formatearRut(textBoxRut.Text);
+         textBoxRut.Text = new MetodosComunes().formatearRut(textBoxRut.Text.ToUpper());
      }
 
 
      private void buttonBuscaCliente_Click(object sender, EventArgs e)
-     
-{
+     {
+         textBoxCodBarra.Select();
          new frmBuscaCliente(this).ShowDialog(); 
     
      }
 
+     private void textBoxRut_TextChanged(object sender, EventArgs e)
+     {
+
+     }
+
+
+     public void AddProducto(ProductosModel producto, int cantidad, string total)
+     {
+         n = this.dtgwDetalle.Rows.Add();
+         this.dtgwDetalle.Rows[n].Cells[0].Value = "-";
+         this.dtgwDetalle.Rows[n].Cells[1].Value = n + 1;
+         this.dtgwDetalle.Rows[n].Cells[2].Value =  producto.codigoInt.ToString(); 
+         this.dtgwDetalle.Rows[n].Cells[3].Value =  producto.nombre.ToString();
+         this.dtgwDetalle.Rows[n].Cells[4].Value = producto.precioNeto.ToString("N0", CultureInfo.CreateSpecificCulture("es-ES"));
+         this.dtgwDetalle.Rows[n].Cells[5].Value =  cantidad;
+         this.dtgwDetalle.Rows[n].Cells[6].Value = "0";
+         this.dtgwDetalle.Rows[n].Cells[7].Value =  Convert.ToDecimal(total).ToString("N0", CultureInfo.CreateSpecificCulture("es-ES"));
+         actualizaTotal();
+     }
+
+     private void dtgwDetalle_Validated(object sender, EventArgs e)
+     {
+         //actualizaTotal();
+     }
+
+     private void actualizaTotal()
+     {
+         Decimal suma = 0;
+         for (int i = 0; i < dtgwDetalle.RowCount; i++)
+         {
+             suma += Convert.ToDecimal(this.dtgwDetalle.Rows[i].Cells[7].Value);
+         }
+         labelMtoTotal.Text = suma.ToString();
+         calculaIva();
+     }
+
+        private void calculaIva()
+        {
+            string total = labelMtoTotal.Text.Replace(".", "");
+            Decimal iva   =  (Convert.ToDecimal(total) * 19)/100;
+            labelIva.Text = iva.ToString("N0", CultureInfo.CreateSpecificCulture("es-ES"));
+
+        }
 
 
 

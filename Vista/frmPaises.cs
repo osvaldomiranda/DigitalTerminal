@@ -39,31 +39,7 @@ namespace Vista
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text == "")
-            {
-                MessageBox.Show("Tiene que ingresar un Nombre", "BUSCAR");
-                textBox1.Select();
-            }
-            else
-            {
-
-                dataGridView1.DataSource = new PaisesModel().getPaisXNombre(textBox1.Text.ToUpper());
-                if (dataGridView1.Rows.Count == 0)
-                {
-                    MessageBox.Show("No se encuentra el registros","BUSCAR");
-                    textBox1.Select();
-                    textBox1.SelectAll();
-                }
-                else
-                {
-                    this.textBox1.Text = (String)this.dataGridView1.CurrentRow.Cells["nomPais"].Value;
-                    this.textBox1.Select();
-                    this.textBox1.SelectAll();
-                    this.btnModifica.Enabled = true;
-                    this.btnElimina.Enabled = true;
-
-                }
-            }
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -141,6 +117,45 @@ namespace Vista
         private void dataGridView1_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
             this.textBox1.Text = (String)this.dataGridView1.CurrentRow.Cells["nomPais"].Value;
+        }
+
+        private void lblPais_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonBuscar_Click(object sender, EventArgs e)
+        {
+            if (textBox1.Text == "")
+            {
+                MessageBox.Show("Tiene que ingresar un Nombre", "BUSCAR");
+                textBox1.Select();
+            }
+            else
+            {
+
+                dataGridView1.DataSource = new PaisesModel().getPaisXNombre(textBox1.Text.ToUpper());
+                if (dataGridView1.Rows.Count == 0)
+                {
+                    MessageBox.Show("No se encuentra el registros", "BUSCAR");
+                    textBox1.Select();
+                    textBox1.SelectAll();
+                }
+                else
+                {
+                    this.textBox1.Text = (String)this.dataGridView1.CurrentRow.Cells["nomPais"].Value;
+                    this.textBox1.Select();
+                    this.textBox1.SelectAll();
+                    this.btnModifica.Enabled = true;
+                    this.btnElimina.Enabled = true;
+
+                }
+            }
+        }
+
+        private void btnElimina_Click(object sender, EventArgs e)
+        {
+
         }
 
 

@@ -478,7 +478,7 @@
             this.comboBoxCiudad.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.comboBoxCiudad.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboBoxCiudad.FormattingEnabled = true;
-            this.comboBoxCiudad.Location = new System.Drawing.Point(4, 8);
+            this.comboBoxCiudad.Location = new System.Drawing.Point(4, 10);
             this.comboBoxCiudad.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxCiudad.Name = "comboBoxCiudad";
             this.comboBoxCiudad.Size = new System.Drawing.Size(305, 24);

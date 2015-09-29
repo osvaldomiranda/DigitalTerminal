@@ -85,7 +85,7 @@
             this.tableLayoutPanel3.ColumnCount = 3;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.48523F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 83.51477F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 95F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 96F));
             this.tableLayoutPanel3.Controls.Add(this.label2, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.txtnomComuna, 1, 1);
@@ -126,7 +126,7 @@
             // 
             this.txtnomComuna.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtnomComuna.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtnomComuna.Location = new System.Drawing.Point(102, 37);
+            this.txtnomComuna.Location = new System.Drawing.Point(101, 37);
             this.txtnomComuna.Name = "txtnomComuna";
             this.txtnomComuna.Size = new System.Drawing.Size(492, 22);
             this.txtnomComuna.TabIndex = 3;
@@ -135,7 +135,7 @@
             // 
             this.comboBoxCiudades.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.comboBoxCiudades.FormattingEnabled = true;
-            this.comboBoxCiudades.Location = new System.Drawing.Point(102, 3);
+            this.comboBoxCiudades.Location = new System.Drawing.Point(101, 3);
             this.comboBoxCiudades.Name = "comboBoxCiudades";
             this.comboBoxCiudades.Size = new System.Drawing.Size(217, 21);
             this.comboBoxCiudades.TabIndex = 5;
@@ -144,7 +144,7 @@
             // lblcodCiudad
             // 
             this.lblcodCiudad.AutoSize = true;
-            this.lblcodCiudad.Location = new System.Drawing.Point(603, 0);
+            this.lblcodCiudad.Location = new System.Drawing.Point(602, 0);
             this.lblcodCiudad.Name = "lblcodCiudad";
             this.lblcodCiudad.Size = new System.Drawing.Size(35, 13);
             this.lblcodCiudad.TabIndex = 6;
@@ -196,8 +196,7 @@
             this.button1.ForeColor = System.Drawing.Color.ForestGreen;
             this.button1.Image = global::Vista.Properties.Resources.exit_32;
             this.button1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button1.Location = new System.Drawing.Point(6, 6);
-            this.button1.Margin = new System.Windows.Forms.Padding(6);
+            this.button1.Location = new System.Drawing.Point(3, 3);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(80, 63);
             this.button1.TabIndex = 19;
@@ -211,44 +210,48 @@
             this.btnSave.FlatAppearance.BorderColor = System.Drawing.Color.Green;
             this.btnSave.FlatAppearance.BorderSize = 2;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Font = new System.Drawing.Font("Papyrus", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.ForestGreen;
             this.btnSave.Image = global::Vista.Properties.Resources.save_32;
-            this.btnSave.Location = new System.Drawing.Point(98, 6);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(6);
+            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnSave.Location = new System.Drawing.Point(89, 3);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(80, 63);
             this.btnSave.TabIndex = 20;
+            this.btnSave.Text = "NUEVO";
             this.btnSave.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnModifica
             // 
-            this.btnModifica.BackgroundImage = global::Vista.Properties.Resources.btSalir;
-            this.btnModifica.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnModifica.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModifica.ForeColor = System.Drawing.Color.White;
-            this.btnModifica.Location = new System.Drawing.Point(187, 3);
+            this.btnModifica.FlatAppearance.BorderSize = 2;
+            this.btnModifica.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnModifica.ForeColor = System.Drawing.Color.Green;
+            this.btnModifica.Image = global::Vista.Properties.Resources.edit_5_32;
+            this.btnModifica.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnModifica.Location = new System.Drawing.Point(175, 3);
             this.btnModifica.Name = "btnModifica";
-            this.btnModifica.Size = new System.Drawing.Size(100, 60);
+            this.btnModifica.Size = new System.Drawing.Size(80, 63);
             this.btnModifica.TabIndex = 16;
-            this.btnModifica.Text = "Modificar";
+            this.btnModifica.Text = "MODIFICAR";
+            this.btnModifica.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnModifica.UseVisualStyleBackColor = true;
             this.btnModifica.Click += new System.EventHandler(this.button2_Click);
             // 
             // btnElimina
             // 
-            this.btnElimina.BackgroundImage = global::Vista.Properties.Resources.btSalir;
-            this.btnElimina.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnElimina.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnElimina.ForeColor = System.Drawing.Color.White;
+            this.btnElimina.FlatAppearance.BorderSize = 2;
+            this.btnElimina.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnElimina.ForeColor = System.Drawing.Color.Green;
+            this.btnElimina.Image = global::Vista.Properties.Resources.delete_32;
             this.btnElimina.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnElimina.Location = new System.Drawing.Point(293, 3);
+            this.btnElimina.Location = new System.Drawing.Point(261, 3);
             this.btnElimina.Name = "btnElimina";
-            this.btnElimina.Size = new System.Drawing.Size(100, 60);
+            this.btnElimina.Size = new System.Drawing.Size(80, 63);
             this.btnElimina.TabIndex = 18;
-            this.btnElimina.Text = "Eliminar";
+            this.btnElimina.Text = "ELIMINAR";
+            this.btnElimina.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnElimina.UseVisualStyleBackColor = true;
             this.btnElimina.Click += new System.EventHandler(this.btnElimina_Click);
             // 
