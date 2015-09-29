@@ -1,9 +1,11 @@
 c:\users\mauricio\documents\visual studio 2010\Projects\DigitalTerminal\DigitalTerminal\bin\Debug\DigitalTerminal.exe
 c:\users\mauricio\documents\visual studio 2010\Projects\DigitalTerminal\DigitalTerminal\bin\Debug\DigitalTerminal.pdb
+c:\users\mauricio\documents\visual studio 2010\Projects\DigitalTerminal\DigitalTerminal\bin\Debug\Vista.dll
+c:\users\mauricio\documents\visual studio 2010\Projects\DigitalTerminal\DigitalTerminal\bin\Debug\Vista.pdb
+c:\users\mauricio\documents\visual studio 2010\Projects\DigitalTerminal\DigitalTerminal\obj\x86\Debug\DigitalTerminal.csprojResolveAssemblyReference.cache
 c:\users\mauricio\documents\visual studio 2010\Projects\DigitalTerminal\DigitalTerminal\obj\x86\Debug\DigitalTerminal.Properties.Resources.resources
 c:\users\mauricio\documents\visual studio 2010\Projects\DigitalTerminal\DigitalTerminal\obj\x86\Debug\DigitalTerminal.csproj.GenerateResource.Cache
 c:\users\mauricio\documents\visual studio 2010\Projects\DigitalTerminal\DigitalTerminal\obj\x86\Debug\DigitalTerminal.exe
 c:\users\mauricio\documents\visual studio 2010\Projects\DigitalTerminal\DigitalTerminal\obj\x86\Debug\DigitalTerminal.pdb
-C:\Users\Mauricio\Documents\Visual Studio 2010\Projects\DigitalTerminal\DigitalTerminal\obj\x86\Debug\DigitalTerminal.csprojResolveAssemblyReference.cache
-C:\Users\Mauricio\Documents\Visual Studio 2010\Projects\DigitalTerminal\DigitalTerminal\obj\x86\Debug\DigitalTerminal.frmLogin.resources
-C:\Users\Mauricio\Documents\Visual Studio 2010\Projects\DigitalTerminal\DigitalTerminal\obj\x86\Debug\DigitalTerminal.frmDigitalTerminal.resources
+C:\Users\Mauricio\Documents\Visual Studio 2010\Projects\DigitalTerminal\DigitalTerminal\bin\Debug\Modelo.dll
+C:\Users\Mauricio\Documents\Visual Studio 2010\Projects\DigitalTerminal\DigitalTerminal\bin\Debug\Modelo.pdb

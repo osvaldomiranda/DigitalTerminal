@@ -1,0 +1,264 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{77FFC94F-FA77-4656-92E2-2541D83E0AA1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Vista</RootNamespace>
+    <AssemblyName>Vista</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="frmComunas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmComunas.Designer.cs">
+      <DependentUpon>frmComunas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCiudades.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCiudades.Designer.cs">
+      <DependentUpon>frmCiudades.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmConstribuyente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConstribuyente.Designer.cs">
+      <DependentUpon>frmConstribuyente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmArchivosMaestros.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmArchivosMaestros.Designer.cs">
+      <DependentUpon>frmArchivosMaestros.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmBuscaProductos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBuscaProductos.Designer.cs">
+      <DependentUpon>frmBuscaProductos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmBuscaCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBuscaCliente.Designer.cs">
+      <DependentUpon>frmBuscaCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmInicio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInicio.Designer.cs">
+      <DependentUpon>frmInicio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogin.designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPaises.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPaises.Designer.cs">
+      <DependentUpon>frmPaises.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPuntoVenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPuntoVenta.Designer.cs">
+      <DependentUpon>frmPuntoVenta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSelecVenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSelecVenta.Designer.cs">
+      <DependentUpon>frmSelecVenta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MetodosComunes.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="frmComunas.resx">
+      <DependentUpon>frmComunas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCiudades.resx">
+      <DependentUpon>frmCiudades.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmConstribuyente.resx">
+      <DependentUpon>frmConstribuyente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmArchivosMaestros.resx">
+      <DependentUpon>frmArchivosMaestros.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBuscaProductos.resx">
+      <DependentUpon>frmBuscaProductos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBuscaCliente.resx">
+      <DependentUpon>frmBuscaCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmInicio.resx">
+      <DependentUpon>frmInicio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPaises.resx">
+      <DependentUpon>frmPaises.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPuntoVenta.resx">
+      <DependentUpon>frmPuntoVenta.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSelecVenta.resx">
+      <DependentUpon>frmSelecVenta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Resources\btSalir.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\agregar_producto.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\eliminar_producto.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\editar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Modelo\Modelo.csproj">
+      <Project>{CD39EC9F-785E-4552-9E6B-A0BF595FB33E}</Project>
+      <Name>Modelo</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add-list-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add-list-64 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add-list-64 %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\purchase-order-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exit-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\settings-5-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add-row-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cart-33-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\plus-5-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\plus-5-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\printer-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\printer-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add-user-2-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\check-mark-11-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add-user-2-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exit-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\productoAdd-512_24.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
