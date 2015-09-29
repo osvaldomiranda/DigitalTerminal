@@ -103,6 +103,36 @@ namespace Modelo
 
             return datatable;
         }
+
+        public DataTable getComunasXCiudad(int codCiudad)
+        {
+            DataTable datatable = new DataTable();
+            SqlConnection sqlcon = new SqlConnection();
+            try
+            {
+                BaseDato con = new BaseDato();
+                OdbcConnection conexion = con.ConnectPostgres();
+
+                OdbcCommand select = new OdbcCommand();
+                select.Connection = conexion;
+                select.CommandText = "SELECT * FROM comunas WHERE \"codCiudad\" = " + codCiudad;
+                OdbcDataReader reader = select.ExecuteReader();
+                datatable.Load(reader);
+
+            }
+            catch (Exception ex)
+            {
+                datatable = null;
+                throw new Exception("Error" + ex.Message);
+            }
+
+            finally
+            {
+                sqlcon.Close();
+            }
+
+            return datatable;
+        }
         
         public void updateComunas(Int32 codComuna,String nomComuna, Int32 codCiudad)
         {

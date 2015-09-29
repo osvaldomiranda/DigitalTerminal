@@ -176,6 +176,7 @@
             this.Name = "frmArchivosMaestros";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmArchivosMaestros";
+            this.Load += new System.EventHandler(this.frmArchivosMaestros_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 

@@ -28,7 +28,7 @@ namespace Vista
 
         private void btnClientes_Click(object sender, EventArgs e)
         {
-            new frmConstribuyente().ShowDialog();
+            new frmContribuyente().ShowDialog();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -39,6 +39,11 @@ namespace Vista
         private void button4_Click(object sender, EventArgs e)
         {
             new frmComunas().ShowDialog();
+        }
+
+        private void frmArchivosMaestros_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

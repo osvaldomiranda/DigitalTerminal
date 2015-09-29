@@ -1,0 +1,2 @@
+C:\Users\Mauricio\Documents\Visual Studio 2010\Projects\DigitalTerminal\DigitalTerminal\obj\x86\Release\DigitalTerminal.Properties.Resources.resources
+C:\Users\Mauricio\Documents\Visual Studio 2010\Projects\DigitalTerminal\DigitalTerminal\obj\x86\Release\DigitalTerminal.csproj.GenerateResource.Cache

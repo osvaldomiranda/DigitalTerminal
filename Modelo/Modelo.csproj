@@ -42,7 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseDato.cs" />
-    <Compile Include="ConstribuyenteModel.cs" />
+    <Compile Include="ContribuyenteModel.cs" />
     <Compile Include="CiudadesModel.cs" />
     <Compile Include="ComunasModel.cs" />
     <Compile Include="DocumentoModel.cs" />

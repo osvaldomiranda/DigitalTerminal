@@ -13,8 +13,8 @@ namespace Vista
     public partial class frmBuscaCliente : Form
     {
        frmPuntoVenta frm;
-       ConstribuyenteModel cliente = new ConstribuyenteModel();
-       frmConstribuyente frmconstribuyente = new frmConstribuyente();
+       ContribuyenteModel cliente = new ContribuyenteModel();
+       frmContribuyente frmconstribuyente = new frmContribuyente();
             
         public frmBuscaCliente(frmPuntoVenta frmPOS)
         {

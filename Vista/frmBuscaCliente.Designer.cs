@@ -103,7 +103,7 @@
             this.textBoxNombreCliente.Location = new System.Drawing.Point(95, 8);
             this.textBoxNombreCliente.Name = "textBoxNombreCliente";
             this.textBoxNombreCliente.Size = new System.Drawing.Size(328, 20);
-            this.textBoxNombreCliente.TabIndex = 1;
+            this.textBoxNombreCliente.TabIndex = 0;
             this.textBoxNombreCliente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxNombreCliente_KeyPress);
             // 
             // label2
@@ -206,7 +206,7 @@
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 28.31858F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 71.68142F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 43F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 32F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 33F));
             this.tableLayoutPanel4.Controls.Add(this.buttonAcepta, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.btnClientesSalir, 0, 0);
             this.tableLayoutPanel4.Location = new System.Drawing.Point(4, 288);
@@ -230,7 +230,7 @@
             this.buttonAcepta.Margin = new System.Windows.Forms.Padding(6);
             this.buttonAcepta.Name = "buttonAcepta";
             this.buttonAcepta.Size = new System.Drawing.Size(80, 63);
-            this.buttonAcepta.TabIndex = 19;
+            this.buttonAcepta.TabIndex = 0;
             this.buttonAcepta.Text = "ACEPTAR";
             this.buttonAcepta.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.buttonAcepta.UseVisualStyleBackColor = false;

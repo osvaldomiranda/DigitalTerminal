@@ -154,7 +154,7 @@
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel5.Size = new System.Drawing.Size(1005, 159);
-            this.tableLayoutPanel5.TabIndex = 15;
+            this.tableLayoutPanel5.TabIndex = 0;
             // 
             // btnSave
             // 
@@ -170,7 +170,7 @@
             this.btnSave.Margin = new System.Windows.Forms.Padding(6);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(80, 63);
-            this.btnSave.TabIndex = 19;
+            this.btnSave.TabIndex = 0;
             this.btnSave.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.button1_Click);
@@ -380,7 +380,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(1005, 141);
-            this.tableLayoutPanel2.TabIndex = 2;
+            this.tableLayoutPanel2.TabIndex = 0;
             // 
             // tableLayoutPanel4
             // 
@@ -495,7 +495,7 @@
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(451, 40);
-            this.tableLayoutPanel1.TabIndex = 15;
+            this.tableLayoutPanel1.TabIndex = 0;
             // 
             // textBoxRut
             // 
@@ -506,7 +506,7 @@
             this.textBoxRut.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxRut.Name = "textBoxRut";
             this.textBoxRut.Size = new System.Drawing.Size(149, 21);
-            this.textBoxRut.TabIndex = 14;
+            this.textBoxRut.TabIndex = 0;
             this.textBoxRut.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxRut_KeyDown);
             this.textBoxRut.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxRut_KeyPress);
             this.textBoxRut.Validated += new System.EventHandler(this.textBoxRut_Validated);
@@ -519,7 +519,7 @@
             this.buttonBuscaCliente.Location = new System.Drawing.Point(160, 3);
             this.buttonBuscaCliente.Name = "buttonBuscaCliente";
             this.buttonBuscaCliente.Size = new System.Drawing.Size(35, 34);
-            this.buttonBuscaCliente.TabIndex = 15;
+            this.buttonBuscaCliente.TabIndex = 1;
             this.buttonBuscaCliente.UseVisualStyleBackColor = true;
             this.buttonBuscaCliente.Click += new System.EventHandler(this.buttonBuscaCliente_Click);
             // 
@@ -563,7 +563,7 @@
             this.buttonBuscaProducto.Margin = new System.Windows.Forms.Padding(6);
             this.buttonBuscaProducto.Name = "buttonBuscaProducto";
             this.buttonBuscaProducto.Size = new System.Drawing.Size(35, 35);
-            this.buttonBuscaProducto.TabIndex = 16;
+            this.buttonBuscaProducto.TabIndex = 0;
             this.buttonBuscaProducto.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.buttonBuscaProducto.UseVisualStyleBackColor = false;
             this.buttonBuscaProducto.Click += new System.EventHandler(this.button4_Click);
@@ -608,7 +608,7 @@
             this.dtgwDetalle.Name = "dtgwDetalle";
             this.dtgwDetalle.RowHeadersVisible = false;
             this.dtgwDetalle.Size = new System.Drawing.Size(999, 226);
-            this.dtgwDetalle.TabIndex = 17;
+            this.dtgwDetalle.TabIndex = 1;
             this.dtgwDetalle.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgwDetalle_CellContentClick);
             this.dtgwDetalle.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgwDetalle_CellEndEdit);
             this.dtgwDetalle.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgwDetalle_CellValueChanged);

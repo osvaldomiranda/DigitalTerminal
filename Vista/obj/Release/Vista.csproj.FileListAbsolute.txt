@@ -1,0 +1,13 @@
+C:\Users\Mauricio\Documents\Visual Studio 2010\Projects\DigitalTerminal\Vista\obj\Release\Vista.frmComunas.resources
+C:\Users\Mauricio\Documents\Visual Studio 2010\Projects\DigitalTerminal\Vista\obj\Release\Vista.frmCiudades.resources
+C:\Users\Mauricio\Documents\Visual Studio 2010\Projects\DigitalTerminal\Vista\obj\Release\Vista.frmConstribuyente.resources
+C:\Users\Mauricio\Documents\Visual Studio 2010\Projects\DigitalTerminal\Vista\obj\Release\Vista.frmArchivosMaestros.resources
+C:\Users\Mauricio\Documents\Visual Studio 2010\Projects\DigitalTerminal\Vista\obj\Release\Vista.frmBuscaProductos.resources
+C:\Users\Mauricio\Documents\Visual Studio 2010\Projects\DigitalTerminal\Vista\obj\Release\Vista.frmBuscaCliente.resources
+C:\Users\Mauricio\Documents\Visual Studio 2010\Projects\DigitalTerminal\Vista\obj\Release\Vista.frmInicio.resources
+C:\Users\Mauricio\Documents\Visual Studio 2010\Projects\DigitalTerminal\Vista\obj\Release\Vista.frmLogin.resources
+C:\Users\Mauricio\Documents\Visual Studio 2010\Projects\DigitalTerminal\Vista\obj\Release\Vista.frmPaises.resources
+C:\Users\Mauricio\Documents\Visual Studio 2010\Projects\DigitalTerminal\Vista\obj\Release\Vista.frmPuntoVenta.resources
+C:\Users\Mauricio\Documents\Visual Studio 2010\Projects\DigitalTerminal\Vista\obj\Release\Vista.frmSelecVenta.resources
+C:\Users\Mauricio\Documents\Visual Studio 2010\Projects\DigitalTerminal\Vista\obj\Release\Vista.Properties.Resources.resources
+C:\Users\Mauricio\Documents\Visual Studio 2010\Projects\DigitalTerminal\Vista\obj\Release\Vista.csproj.GenerateResource.Cache

@@ -13,7 +13,7 @@ namespace Vista
     public partial class frmPuntoVenta : Form
     {
         int n = 0;
-        ConstribuyenteModel cliente= new ConstribuyenteModel();
+        ContribuyenteModel cliente= new ContribuyenteModel();
         DataTable dataTableCliente = new DataTable();
         
         public frmPuntoVenta()
@@ -112,7 +112,7 @@ namespace Vista
 
      public void frmPuntoVenta_Load(object sender, EventArgs e)
         {
-          
+            this.textBoxRut.Select(); 
         }
 
 
