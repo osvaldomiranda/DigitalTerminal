@@ -57,7 +57,7 @@ namespace Vista
             try
             {
                 //frm.textBoxRut.Select();
-                frm.textBoxRut.Text = (String)this.dataGridView1.CurrentRow.Cells["rutRecep"].Value;
+                frm.textBoxRutRecep.Text = (String)this.dataGridView1.CurrentRow.Cells["rutRecep"].Value;
                 frm.textBoxRut_KeyPress(frm, new KeyPressEventArgs((char)(Keys.Enter)));
                 frm.buttonBuscaProducto.Select(); // TODO foco boton 
                 this.Close();

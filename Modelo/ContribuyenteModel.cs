@@ -41,7 +41,7 @@ namespace Modelo
 
                 OdbcCommand select = new OdbcCommand();
                 select.Connection = conexion;
-                select.CommandText = "SELECT * FROM contribuyente "
+                select.CommandText = "SELECT * FROM cliente "
                                     + "INNER JOIN ciudades ON \"codCiudadRecep\" =\"codCiudad\" "
                                     + "INNER JOIN comunas ON \"codCmnaRecep\" = \"codComuna\" "
                                     + "where \"rutRecep\" = '" + rut + "'";
@@ -117,7 +117,7 @@ namespace Modelo
 
                 OdbcCommand select = new OdbcCommand();
                 select.Connection = conexion;
-                select.CommandText = "SELECT \"rutRecep\",\"rznSocRecep\",\"giroRecep\" FROM contribuyente where \"rznSocRecep\" LIKE '%" + nombre + "%'";
+                select.CommandText = "SELECT \"rutRecep\",\"rznSocRecep\",\"giroRecep\" FROM cliente where \"rznSocRecep\" LIKE '%" + nombre + "%'";
                 OdbcDataReader reader = select.ExecuteReader();
                 datatable.Load(reader);
 

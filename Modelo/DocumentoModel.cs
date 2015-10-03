@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Runtime.Serialization;
+using System.Data.Odbc;
+using System.IO;
+using System.Runtime.Serialization.Json;
 
 namespace Modelo
 {
-    class DocumentoModel
+  [DataContract]
+ public class DocumentoModel
     {
         public String fileName { get; set; } 
         [DataMember]
@@ -266,14 +270,175 @@ namespace Modelo
 
         [DataMember]
         public List<Comisiones> comisiones = new List<Comisiones>();
-        
+
+
+        public void save(DocumentoModel documento)
+        {
+
+            try
+            {
+                BaseDato con = new BaseDato();
+                OdbcConnection conexion = con.ConnectPostgres();
+
+                OdbcCommand select = new OdbcCommand();
+                select.Connection = conexion;
+                select.CommandText =
+                    "INSERT INTO documento("
+                    + "tipodte, "       
+                    + "folio, "        
+                    + "fchemis, "       
+                    + "indnorebaja, "   
+                    + "tipodespacho, "  
+                    + "indtraslado, "   
+                   // + "mntcancel, "     
+                   // + "saldoinsol, "    
+                   // + "periododesde, "  
+                   // + "periodohasta, "  
+                   // + "mediopago,"      
+                   // + "tipoctapago, "   
+                   // + "numctapago, "    
+                   // + "bcopago, "       
+                   // + "termpagocdg, "   
+                   // + "termpagoglosa, " 
+                   // + "termpagodias, "  
+                   // + "fchvenc, "       
+                    + "rutemisor, "     
+                    + "rznsoc, "        
+                    + "giroemis, "      
+                    + "telefono, "      
+                    + "correoemisor, "  
+                    + "acteco, "        
+                    + "cdgtraslado, "   
+                    + "folioaut, "      
+                    + "fchaut, "        
+                    + "sucursal, "      
+                    + "cdgsiisucur, "   
+                    + "codadicsucur, "  
+                    + "dirorigen, "     
+                    + "cmnaorigen, "    
+                    + "ciudadorigen,"   
+                    + "cdgvendedor, "   
+                    + "rutrecep, "      
+                    + "rznsocrecep, "   
+                    + "girorecep, "     
+                    + "dirrecep, "      
+                    + "cmnarecep,"      
+                    + "ciudadrecep, "   
+                    + "patente, "       
+                    + "ruttrans, "      
+                    + "rutchofer, "     
+                    + "nombrechofer, "  
+                    + "dirdest,"        
+                    + "cmnadest, "      
+                    + "tpomoneda, "     
+                    + "mntneto, "       
+                    + "mntexe, "        
+                    + "mntbase, "       
+                    + "mntmargencom,"   
+                    + "tasaiva, "       
+                    + "iva, "           
+                    + "ivaprop, "       
+                    + "ivaterc, "         
+                    + "mnttotal"        
+                    + ") VALUES ("      /////////////////////////////////////////////////////////////////
+                    + documento.TipoDTE + ","//"tipodte, "
+                    + documento.Folio + ","//"folio, "
+                    + documento.FchEmis + ","//"fchemis, "
+                    + documento.IndNoRebaja + ","//"indnorebaja, "
+                    + documento.TipoDespacho + ","//"tipodespacho, "
+                    + documento.IndTraslado + ","//"indtraslado, "
+                    //+ "mntcancel, "
+                    //+ "saldoinsol, "
+                    //+ "periododesde, "
+                    //+ "periodohasta, "
+                    //+ "mediopago,"
+                    //+ "tipoctapago, "
+                    //+ "numctapago, "
+                    //+ "bcopago, "
+                    //+ "termpagocdg, "
+                    //+ "termpagoglosa, "
+                    //+ "termpagodias, "
+                    //+ "fchvenc, "
+                    + documento.RUTEmisor + "," //"rutemisor, "
+                    + documento.RznSoc + ","    //"rznsoc, "
+                    + documento.GiroEmis + ","  //"giroemis, "
+                    + documento.Telefono + ","  //"telefono, "
+                    + documento.CorreoEmisor + ","//"correoemisor, "
+                    + documento.Acteco + ","    //"acteco, "
+                    + documento.CdgTraslado + ","//"cdgtraslado, "
+                    + documento.FolioAut + ","  //"folioaut, "
+                    + documento.FchAut + ","    //"fchaut, "
+                    + documento.Sucursal + ","  //"sucursal, "
+                    + documento.CdgSIISucur + ","//"cdgsiisucur, "
+                    + documento.CodAdicSucur + ","//"codadicsucur, "
+                    + documento.DirOrigen + ","//"dirorigen, "
+                    + documento.CmnaOrigen + ","//"cmnaorigen, "
+                    + documento.CiudadOrigen + ","//"ciudadorigen,"
+                    + documento.CdgVendedor + ","//"cdgvendedor, "
+                    + documento.RUTRecep + ","//"rutrecep, "
+                    + documento.RznSocRecep + ","//"rznsocrecep, "
+                    + documento.GiroRecep + ","//"girorecep, "
+                    + documento.DirRecep + ","//"dirrecep, "
+                    + documento.CmnaRecep + ","//"cmnarecep,"
+                    + documento.CiudadRecep + ","//"ciudadrecep, "
+                    + documento.Patente + "," //"patente, "
+                    + documento.RUTTrans + ","//"ruttrans, "
+                    + documento.RUTChofer + ","//"rutchofer, "
+                    + documento.NombreChofer + ","//"nombrechofer, "
+                    + documento.DirDest + ","//"dirdest,"
+                    + documento.CmnaDest + ","//"cmnadest, "
+                    + documento.TpoMoneda + ","//"tpomoneda, "
+                    + documento.PrnMtoNeto + ","//"mntneto, "
+                    + documento.MntExe + ","//"mntexe, "
+                    + documento.MntBase + ","//"mntbase, "
+                    + "mntmargencom,"
+                    + documento.TasaIVA + ","//"tasaiva, "
+                    + documento.IVA + ","//"iva, "
+                    + "ivaprop, "
+                    + "ivaterc, "
+                    + documento.MntTotal + ","//"mnttotal"        
+
+                    + ");";
+
+                OdbcDataReader reader = select.ExecuteReader();
+
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error" + ex.Message);
+            }
+
+        }
+
+        public void serialize(DocumentoModel documento)
+        {
+
+            MemoryStream stream = new MemoryStream();
+            DataContractJsonSerializer ds = new DataContractJsonSerializer(typeof(DocumentoModel));
+            ds.WriteObject(stream, documento);
+            string jsonString = Encoding.UTF8.GetString(stream.ToArray());
+            stream.Close();
+
+            String json = jsonString.Replace("null", "\"\"");
+     
+
+            String fileNameJson = @"C:/IatFiles/file/"+documento.TipoDTE+"_"+ documento.RUTEmisor + "_" + documento.Folio + ".json";
+
+            using (System.IO.StreamWriter file = new System.IO.StreamWriter(fileNameJson, false, Encoding.GetEncoding("ISO-8859-1")))
+            {
+                file.WriteLine(json);
+            }
+
+        }
     }
+
+
 
 //############################## Area Clases #################################################################################
 
-
     [DataContract]
-    class Detalle
+  public class Detalle
     {
         [DataMember]
         public int NroLinDet { get; set; } //Número del ítem. Desde 1 a 60
@@ -310,7 +475,7 @@ namespace Modelo
         [DataMember] 
         public decimal PrcRef { get; set; } // Precio unitario para la unidad de medida de referencia (no se usa para el cálculo del valor neto) 12 enteros, 6 decimales. Obligatorio para facturas de venta, compra o notas que indican emisor opera como Agente Retenedor 
         [DataMember]
-        public decimal QtyItem { get; set; } // Cantidad del ítem en 12 enteros y 6 decimales Obligatorio para facturas de venta, compra o notas que indican emisor opera como Agente Retenedor
+        public int QtyItem { get; set; } // Cantidad del ítem en 12 enteros y 6 decimales Obligatorio para facturas de venta, compra o notas que indican emisor opera como Agente Retenedor
         [DataMember] 
         public string FchElabor { get; set; } // del item
         [DataMember] 
@@ -332,24 +497,98 @@ namespace Modelo
         [DataMember]
         public int MontoItem { get; set; } //(Precio Unitario * Cantidad ) – Monto Descuento + Monto Recargo
         [DataMember]
-        public int MontoBruItem { get; set; } //(Precio Unitario * Cantidad ) – Monto Descuento + Monto Recargo
+        public int MontoBruItem { get; set; } 
+        [DataMember]
+        public int FolioDoc { get; set; }
 
+        public void save(Detalle detalledoc)
+        {
+            try
+            {
+                BaseDato con = new BaseDato();
+                OdbcConnection conexion = con.ConnectPostgres();
+
+                OdbcCommand select = new OdbcCommand();
+                select.Connection = conexion;
+                select.CommandText =
+                    "INSERT INTO detalledoc( "
+                   + "nrolindet, "
+                   + "tpocodigo, "
+                   + "vlrcodigo, "
+                   + "tpodocliq, "
+                   + "indexe, "
+                   + "indagente, "
+                   + "mntbasefaena, "
+                   + "mntmargcomer, "
+                   + "prcconsfinal, "
+                   + "nmbitem, "
+                   + "dscitem, "
+                   + "qtyref, "
+                   + "unmdref, "
+                   + "prcref, "
+                   + "qtyitem, "
+                   + "fchelabor, "
+                   + "fchvencim, "
+                   + "unmditem, "
+                   + "prcitem, "
+                   + "descuentopct, "
+                   + "descuentomonto, "
+                   //+ "recargopct, "
+                   //+ "recargomonto, "
+                   + "montoitem, "
+                   + "foliodoc"
+                   + ") VALUES ("
+                   + detalledoc.NroLinDet + ","//"nrolindet, "
+                   + detalledoc.TpoCodigo + ","//"tpocodigo, "
+                   + detalledoc.VlrCodigo + ","//"vlrcodigo, "
+                   + detalledoc.TpoDocLiq + ","//"tpodocliq, "
+                   + detalledoc.IndExe + ","//"indexe, "
+                   + detalledoc.IndAgente + ","//"indagente, "
+                   + detalledoc.MntBaseFaena + ","//"mntbasefaena, "
+                   + detalledoc.MntMargComer + ","//"mntmargcomer, "
+                   + detalledoc.PrcConsFinal + ",'"//"prcconsfinal, "
+                   + detalledoc.NmbItem + "',"//"nmbitem, "
+                   + detalledoc.DscItem + ","//"dscitem, "
+                   + detalledoc.QtyRef + ","//"qtyref, "
+                   + detalledoc.UnmdRef + ","//"unmdref, "
+                   + detalledoc.PrcRef + ","//"prcref, "
+                   + detalledoc.QtyItem + ","//"qtyitem, "
+                   + detalledoc.FchElabor + ","//"fchelabor, "
+                   + detalledoc.FchVencim + ","//"fchvencim, "
+                   + detalledoc.UnmdItem + ","//"unmditem, "
+                   + detalledoc.PrcItem + ","//"prcitem, "
+                   + detalledoc.DescuentoPct + ","//"descuentopct, "
+                   + detalledoc.DescuentoMonto + ","//"descuentomonto, "
+                   //+ "recargopct, "
+                   //+ "recargomonto, "
+                   + detalledoc.MontoItem + ","//"montoitem, "
+                   + detalledoc.FolioDoc + ","//"foliodoc"
+                   + ");";
+                OdbcDataReader reader = select.ExecuteReader();
+
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error" + ex.Message);
+            }
+
+
+        }
       
     }
 
-    class Sucursal
+  public  class Sucursal
     {
         public Sucursal(String dato) { datosucursal = dato; }
         public String datosucursal { get; set; }
        
     }
 
-    
-
 
 //######################################## Sub Totales Informativos ###########################################################################
      [DataContract]
-    class MntPagos
+  public  class MntPagos
     {
         [DataMember]
         public string FchPago { get; set; } //
@@ -359,7 +598,7 @@ namespace Modelo
 
 
      [DataContract]
-     class ImptoReten
+  public   class ImptoReten
     {
         [DataMember]
         public string TipoImp { get; set; } //Código del impuesto o retención de acuerdo a la codificación detallada en tabla de códigos (ver Punto 4 del índice). Incluye Retención de Cambio sujeto de Construcción
@@ -370,7 +609,7 @@ namespace Modelo
     }
 
      [DataContract]
-     class DscRcgGlobal
+  public  class DscRcgGlobal
      {
          [DataMember]
          public int NroLinDR { get; set; }
@@ -389,7 +628,7 @@ namespace Modelo
 
 
      [DataContract]
-     class ReferenciaDoc
+    public class ReferenciaDoc
      {
          [DataMember]
          public int NroLinRef { get; set; }
@@ -413,7 +652,7 @@ namespace Modelo
 
 
      [DataContract]
-     class Comisiones
+   public  class Comisiones
      {
          [DataMember]
          public int NroLinCom { get; set; }

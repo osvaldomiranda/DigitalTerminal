@@ -70,7 +70,7 @@ namespace Modelo
 
                 OdbcCommand select = new OdbcCommand();
                 select.Connection = conexion;
-                select.CommandText = "SELECT * FROM productos where \"codigoInt\" = '" + codProd+ "'";
+                select.CommandText = "SELECT * FROM producto where \"codigoInt\" = '" + codProd+ "'";
                 OdbcDataReader reader = select.ExecuteReader();
                 datatable.Load(reader);
 
@@ -100,7 +100,7 @@ namespace Modelo
 
                 OdbcCommand select = new OdbcCommand();
                 select.Connection = conexion;
-                select.CommandText = "SELECT * FROM productos where nombre LIKE '%" + nombreProducto + "%'";
+                select.CommandText = "SELECT * FROM producto where nombre LIKE '%" + nombreProducto + "%'";
                 OdbcDataReader reader = select.ExecuteReader();
                 datatable.Load(reader);
 

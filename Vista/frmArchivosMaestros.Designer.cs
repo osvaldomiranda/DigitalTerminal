@@ -94,6 +94,7 @@
             this.buttonProductos.Text = "Productos";
             this.buttonProductos.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.buttonProductos.UseVisualStyleBackColor = true;
+            this.buttonProductos.Click += new System.EventHandler(this.buttonProductos_Click);
             // 
             // button5
             // 

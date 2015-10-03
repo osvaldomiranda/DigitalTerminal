@@ -2,3 +2,4 @@ C:\Users\Mauricio\Documents\Visual Studio 2010\Projects\DigitalTerminal\Modelo\b
 C:\Users\Mauricio\Documents\Visual Studio 2010\Projects\DigitalTerminal\Modelo\bin\Debug\Modelo.pdb
 C:\Users\Mauricio\Documents\Visual Studio 2010\Projects\DigitalTerminal\Modelo\obj\Debug\Modelo.dll
 C:\Users\Mauricio\Documents\Visual Studio 2010\Projects\DigitalTerminal\Modelo\obj\Debug\Modelo.pdb
+C:\Users\Mauricio\Documents\Visual Studio 2010\Projects\DigitalTerminal\Modelo\obj\Debug\Modelo.csprojResolveAssemblyReference.cache

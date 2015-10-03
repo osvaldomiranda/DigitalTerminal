@@ -38,10 +38,7 @@
             this.tblpPuntoVenta = new System.Windows.Forms.TableLayoutPanel();
             this.lblNomCliente = new System.Windows.Forms.Label();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnSave = new System.Windows.Forms.Button();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
-            this.label15 = new System.Windows.Forms.Label();
-            this.labelImpAdic = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -50,23 +47,36 @@
             this.labelSubTotal = new System.Windows.Forms.Label();
             this.labelMtoExento = new System.Windows.Forms.Label();
             this.labelIva = new System.Windows.Forms.Label();
-            this.btnPrint = new System.Windows.Forms.Button();
+            this.labelImpAdic = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.labelMtoTotal = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
             this.btnSalir = new System.Windows.Forms.Button();
+            this.buttonGuardar = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.labelCiudad = new System.Windows.Forms.Label();
-            this.labelComuna = new System.Windows.Forms.Label();
-            this.labelDireccion = new System.Windows.Forms.Label();
+            this.labelCiudadRecep = new System.Windows.Forms.Label();
+            this.labelComunaRecep = new System.Windows.Forms.Label();
+            this.labelDireccionRecep = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.labelTelefono = new System.Windows.Forms.Label();
-            this.labelGiro = new System.Windows.Forms.Label();
-            this.labelNombre = new System.Windows.Forms.Label();
+            this.labelTelefonoRecep = new System.Windows.Forms.Label();
+            this.labelGiroRecep = new System.Windows.Forms.Label();
+            this.labelRznSocRecep = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.textBoxRut = new System.Windows.Forms.TextBox();
+            this.textBoxRutRecep = new System.Windows.Forms.TextBox();
             this.buttonBuscaCliente = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.dtgwDetalle = new System.Windows.Forms.DataGridView();
+            this.elimina = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.item = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.desc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
             this.buttonBuscaProducto = new System.Windows.Forms.Button();
             this.textBoxCodBarra = new System.Windows.Forms.TextBox();
@@ -79,16 +89,6 @@
             this.label18 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.elimina = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.item = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.desc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label2 = new System.Windows.Forms.Label();
-            this.labelMtoTotal = new System.Windows.Forms.Label();
             this.tblpPuntoVenta.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
@@ -149,10 +149,10 @@
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel5.Controls.Add(this.btnSave, 1, 0);
             this.tableLayoutPanel5.Controls.Add(this.tableLayoutPanel7, 3, 0);
-            this.tableLayoutPanel5.Controls.Add(this.btnPrint, 1, 0);
             this.tableLayoutPanel5.Controls.Add(this.btnSalir, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.buttonGuardar, 1, 0);
+            this.tableLayoutPanel5.Controls.Add(this.button2, 2, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(7, 478);
             this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -161,24 +161,6 @@
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel5.Size = new System.Drawing.Size(1005, 159);
             this.tableLayoutPanel5.TabIndex = 0;
-            // 
-            // btnSave
-            // 
-            this.btnSave.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnSave.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnSave.FlatAppearance.BorderColor = System.Drawing.Color.Green;
-            this.btnSave.FlatAppearance.BorderSize = 2;
-            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Font = new System.Drawing.Font("Papyrus", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.ForeColor = System.Drawing.Color.ForestGreen;
-            this.btnSave.Image = global::Vista.Properties.Resources.save_32;
-            this.btnSave.Location = new System.Drawing.Point(98, 6);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(6);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(80, 63);
-            this.btnSave.TabIndex = 0;
-            this.btnSave.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnSave.UseVisualStyleBackColor = false;
             // 
             // tableLayoutPanel7
             // 
@@ -210,30 +192,6 @@
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
             this.tableLayoutPanel7.Size = new System.Drawing.Size(262, 153);
             this.tableLayoutPanel7.TabIndex = 18;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(3, 98);
-            this.label15.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(127, 53);
-            this.label15.TabIndex = 29;
-            this.label15.Text = "MONTO TOTAL";
-            // 
-            // labelImpAdic
-            // 
-            this.labelImpAdic.AutoSize = true;
-            this.labelImpAdic.Dock = System.Windows.Forms.DockStyle.Right;
-            this.labelImpAdic.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelImpAdic.Location = new System.Drawing.Point(245, 78);
-            this.labelImpAdic.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.labelImpAdic.Name = "labelImpAdic";
-            this.labelImpAdic.Size = new System.Drawing.Size(14, 16);
-            this.labelImpAdic.TabIndex = 28;
-            this.labelImpAdic.Text = "0";
             // 
             // label10
             // 
@@ -331,23 +289,53 @@
             this.labelIva.TabIndex = 27;
             this.labelIva.Text = "0";
             // 
-            // btnPrint
+            // labelImpAdic
             // 
-            this.btnPrint.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnPrint.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnPrint.FlatAppearance.BorderColor = System.Drawing.Color.Green;
-            this.btnPrint.FlatAppearance.BorderSize = 2;
-            this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPrint.Font = new System.Drawing.Font("Papyrus", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrint.ForeColor = System.Drawing.Color.ForestGreen;
-            this.btnPrint.Image = global::Vista.Properties.Resources.printer_32;
-            this.btnPrint.Location = new System.Drawing.Point(190, 6);
-            this.btnPrint.Margin = new System.Windows.Forms.Padding(6);
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(80, 63);
-            this.btnPrint.TabIndex = 1;
-            this.btnPrint.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnPrint.UseVisualStyleBackColor = false;
+            this.labelImpAdic.AutoSize = true;
+            this.labelImpAdic.Dock = System.Windows.Forms.DockStyle.Right;
+            this.labelImpAdic.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelImpAdic.Location = new System.Drawing.Point(245, 78);
+            this.labelImpAdic.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.labelImpAdic.Name = "labelImpAdic";
+            this.labelImpAdic.Size = new System.Drawing.Size(14, 16);
+            this.labelImpAdic.TabIndex = 28;
+            this.labelImpAdic.Text = "0";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(55, 78);
+            this.label2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(75, 16);
+            this.label2.TabIndex = 30;
+            this.label2.Text = "IMP. ADIC.";
+            // 
+            // labelMtoTotal
+            // 
+            this.labelMtoTotal.AutoSize = true;
+            this.labelMtoTotal.Dock = System.Windows.Forms.DockStyle.Right;
+            this.labelMtoTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelMtoTotal.Location = new System.Drawing.Point(243, 98);
+            this.labelMtoTotal.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.labelMtoTotal.Name = "labelMtoTotal";
+            this.labelMtoTotal.Size = new System.Drawing.Size(16, 53);
+            this.labelMtoTotal.TabIndex = 31;
+            this.labelMtoTotal.Text = "0";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Dock = System.Windows.Forms.DockStyle.Right;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(3, 98);
+            this.label15.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(127, 53);
+            this.label15.TabIndex = 29;
+            this.label15.Text = "MONTO TOTAL";
             // 
             // btnSalir
             // 
@@ -360,8 +348,7 @@
             this.btnSalir.ForeColor = System.Drawing.Color.ForestGreen;
             this.btnSalir.Image = global::Vista.Properties.Resources.exit_32;
             this.btnSalir.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnSalir.Location = new System.Drawing.Point(6, 6);
-            this.btnSalir.Margin = new System.Windows.Forms.Padding(6);
+            this.btnSalir.Location = new System.Drawing.Point(3, 3);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(80, 63);
             this.btnSalir.TabIndex = 2;
@@ -369,6 +356,37 @@
             this.btnSalir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnSalir.UseVisualStyleBackColor = false;
             this.btnSalir.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // buttonGuardar
+            // 
+            this.buttonGuardar.FlatAppearance.BorderSize = 2;
+            this.buttonGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonGuardar.ForeColor = System.Drawing.Color.Green;
+            this.buttonGuardar.Image = global::Vista.Properties.Resources.save_32;
+            this.buttonGuardar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.buttonGuardar.Location = new System.Drawing.Point(89, 3);
+            this.buttonGuardar.Name = "buttonGuardar";
+            this.buttonGuardar.Size = new System.Drawing.Size(80, 63);
+            this.buttonGuardar.TabIndex = 19;
+            this.buttonGuardar.Text = "GUARDAR";
+            this.buttonGuardar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.buttonGuardar.UseVisualStyleBackColor = true;
+            this.buttonGuardar.Click += new System.EventHandler(this.buttonGuardar_Click);
+            // 
+            // button2
+            // 
+            this.button2.FlatAppearance.BorderSize = 2;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.ForeColor = System.Drawing.Color.Green;
+            this.button2.Image = global::Vista.Properties.Resources.printer_32;
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button2.Location = new System.Drawing.Point(175, 3);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(80, 63);
+            this.button2.TabIndex = 20;
+            this.button2.Text = "IMPRIMIR";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel2
             // 
@@ -394,9 +412,9 @@
             // 
             this.tableLayoutPanel4.ColumnCount = 1;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Controls.Add(this.labelCiudad, 0, 2);
-            this.tableLayoutPanel4.Controls.Add(this.labelComuna, 0, 1);
-            this.tableLayoutPanel4.Controls.Add(this.labelDireccion, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.labelCiudadRecep, 0, 2);
+            this.tableLayoutPanel4.Controls.Add(this.labelComunaRecep, 0, 1);
+            this.tableLayoutPanel4.Controls.Add(this.labelDireccionRecep, 0, 0);
             this.tableLayoutPanel4.Location = new System.Drawing.Point(463, 71);
             this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
@@ -407,46 +425,46 @@
             this.tableLayoutPanel4.Size = new System.Drawing.Size(395, 63);
             this.tableLayoutPanel4.TabIndex = 17;
             // 
-            // labelCiudad
+            // labelCiudadRecep
             // 
-            this.labelCiudad.AutoSize = true;
-            this.labelCiudad.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCiudad.Location = new System.Drawing.Point(3, 40);
-            this.labelCiudad.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.labelCiudad.Name = "labelCiudad";
-            this.labelCiudad.Size = new System.Drawing.Size(52, 15);
-            this.labelCiudad.TabIndex = 2;
-            this.labelCiudad.Text = "CIUDAD";
+            this.labelCiudadRecep.AutoSize = true;
+            this.labelCiudadRecep.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCiudadRecep.Location = new System.Drawing.Point(3, 40);
+            this.labelCiudadRecep.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.labelCiudadRecep.Name = "labelCiudadRecep";
+            this.labelCiudadRecep.Size = new System.Drawing.Size(52, 15);
+            this.labelCiudadRecep.TabIndex = 2;
+            this.labelCiudadRecep.Text = "CIUDAD";
             // 
-            // labelComuna
+            // labelComunaRecep
             // 
-            this.labelComuna.AutoSize = true;
-            this.labelComuna.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelComuna.Location = new System.Drawing.Point(3, 21);
-            this.labelComuna.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.labelComuna.Name = "labelComuna";
-            this.labelComuna.Size = new System.Drawing.Size(60, 15);
-            this.labelComuna.TabIndex = 1;
-            this.labelComuna.Text = "COMUNA";
+            this.labelComunaRecep.AutoSize = true;
+            this.labelComunaRecep.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelComunaRecep.Location = new System.Drawing.Point(3, 21);
+            this.labelComunaRecep.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.labelComunaRecep.Name = "labelComunaRecep";
+            this.labelComunaRecep.Size = new System.Drawing.Size(60, 15);
+            this.labelComunaRecep.TabIndex = 1;
+            this.labelComunaRecep.Text = "COMUNA";
             // 
-            // labelDireccion
+            // labelDireccionRecep
             // 
-            this.labelDireccion.AutoSize = true;
-            this.labelDireccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDireccion.Location = new System.Drawing.Point(3, 2);
-            this.labelDireccion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.labelDireccion.Name = "labelDireccion";
-            this.labelDireccion.Size = new System.Drawing.Size(73, 15);
-            this.labelDireccion.TabIndex = 0;
-            this.labelDireccion.Text = "DIRECCION";
+            this.labelDireccionRecep.AutoSize = true;
+            this.labelDireccionRecep.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDireccionRecep.Location = new System.Drawing.Point(3, 2);
+            this.labelDireccionRecep.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.labelDireccionRecep.Name = "labelDireccionRecep";
+            this.labelDireccionRecep.Size = new System.Drawing.Size(73, 15);
+            this.labelDireccionRecep.TabIndex = 0;
+            this.labelDireccionRecep.Text = "DIRECCION";
             // 
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 1;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Controls.Add(this.labelTelefono, 0, 2);
-            this.tableLayoutPanel3.Controls.Add(this.labelGiro, 0, 1);
-            this.tableLayoutPanel3.Controls.Add(this.labelNombre, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.labelTelefonoRecep, 0, 2);
+            this.tableLayoutPanel3.Controls.Add(this.labelGiroRecep, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.labelRznSocRecep, 0, 0);
             this.tableLayoutPanel3.Location = new System.Drawing.Point(4, 71);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
@@ -457,45 +475,45 @@
             this.tableLayoutPanel3.Size = new System.Drawing.Size(451, 63);
             this.tableLayoutPanel3.TabIndex = 16;
             // 
-            // labelTelefono
+            // labelTelefonoRecep
             // 
-            this.labelTelefono.AutoSize = true;
-            this.labelTelefono.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTelefono.Location = new System.Drawing.Point(3, 43);
-            this.labelTelefono.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.labelTelefono.Name = "labelTelefono";
-            this.labelTelefono.Size = new System.Drawing.Size(71, 15);
-            this.labelTelefono.TabIndex = 2;
-            this.labelTelefono.Text = "TELEFONO";
+            this.labelTelefonoRecep.AutoSize = true;
+            this.labelTelefonoRecep.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTelefonoRecep.Location = new System.Drawing.Point(3, 43);
+            this.labelTelefonoRecep.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.labelTelefonoRecep.Name = "labelTelefonoRecep";
+            this.labelTelefonoRecep.Size = new System.Drawing.Size(71, 15);
+            this.labelTelefonoRecep.TabIndex = 2;
+            this.labelTelefonoRecep.Text = "TELEFONO";
             // 
-            // labelGiro
+            // labelGiroRecep
             // 
-            this.labelGiro.AutoSize = true;
-            this.labelGiro.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelGiro.Location = new System.Drawing.Point(3, 24);
-            this.labelGiro.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.labelGiro.Name = "labelGiro";
-            this.labelGiro.Size = new System.Drawing.Size(37, 15);
-            this.labelGiro.TabIndex = 1;
-            this.labelGiro.Text = "GIRO";
+            this.labelGiroRecep.AutoSize = true;
+            this.labelGiroRecep.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelGiroRecep.Location = new System.Drawing.Point(3, 24);
+            this.labelGiroRecep.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.labelGiroRecep.Name = "labelGiroRecep";
+            this.labelGiroRecep.Size = new System.Drawing.Size(37, 15);
+            this.labelGiroRecep.TabIndex = 1;
+            this.labelGiroRecep.Text = "GIRO";
             // 
-            // labelNombre
+            // labelRznSocRecep
             // 
-            this.labelNombre.AutoSize = true;
-            this.labelNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelNombre.Location = new System.Drawing.Point(3, 2);
-            this.labelNombre.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.labelNombre.Name = "labelNombre";
-            this.labelNombre.Size = new System.Drawing.Size(75, 18);
-            this.labelNombre.TabIndex = 0;
-            this.labelNombre.Text = "NOMBRE";
+            this.labelRznSocRecep.AutoSize = true;
+            this.labelRznSocRecep.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelRznSocRecep.Location = new System.Drawing.Point(3, 2);
+            this.labelRznSocRecep.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.labelRznSocRecep.Name = "labelRznSocRecep";
+            this.labelRznSocRecep.Size = new System.Drawing.Size(75, 18);
+            this.labelRznSocRecep.TabIndex = 0;
+            this.labelRznSocRecep.Text = "NOMBRE";
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.Controls.Add(this.textBoxRut, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.textBoxRutRecep, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.buttonBuscaCliente, 1, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(4, 25);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -505,20 +523,20 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(451, 40);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // textBoxRut
+            // textBoxRutRecep
             // 
-            this.textBoxRut.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textBoxRut.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBoxRut.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxRut.Location = new System.Drawing.Point(4, 9);
-            this.textBoxRut.Margin = new System.Windows.Forms.Padding(4);
-            this.textBoxRut.Name = "textBoxRut";
-            this.textBoxRut.Size = new System.Drawing.Size(149, 21);
-            this.textBoxRut.TabIndex = 0;
-            this.textBoxRut.TextChanged += new System.EventHandler(this.textBoxRut_TextChanged);
-            this.textBoxRut.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxRut_KeyDown);
-            this.textBoxRut.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxRut_KeyPress);
-            this.textBoxRut.Validated += new System.EventHandler(this.textBoxRut_Validated);
+            this.textBoxRutRecep.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.textBoxRutRecep.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxRutRecep.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxRutRecep.Location = new System.Drawing.Point(4, 9);
+            this.textBoxRutRecep.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxRutRecep.Name = "textBoxRutRecep";
+            this.textBoxRutRecep.Size = new System.Drawing.Size(149, 21);
+            this.textBoxRutRecep.TabIndex = 0;
+            this.textBoxRutRecep.TextChanged += new System.EventHandler(this.textBoxRut_TextChanged);
+            this.textBoxRutRecep.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxRut_KeyDown);
+            this.textBoxRutRecep.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxRut_KeyPress);
+            this.textBoxRutRecep.Validated += new System.EventHandler(this.textBoxRut_Validated);
             // 
             // buttonBuscaCliente
             // 
@@ -602,6 +620,74 @@
             this.dtgwDetalle.TabIndex = 0;
             this.dtgwDetalle.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgwDetalle_CellEndEdit);
             this.dtgwDetalle.Validated += new System.EventHandler(this.dtgwDetalle_Validated);
+            // 
+            // elimina
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Red;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Red;
+            this.elimina.DefaultCellStyle = dataGridViewCellStyle2;
+            this.elimina.HeaderText = "Quitar";
+            this.elimina.Name = "elimina";
+            this.elimina.ReadOnly = true;
+            this.elimina.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.elimina.Text = "Quitar";
+            this.elimina.Width = 48;
+            // 
+            // item
+            // 
+            this.item.HeaderText = "Item";
+            this.item.Name = "item";
+            this.item.ReadOnly = true;
+            this.item.Width = 58;
+            // 
+            // codigo
+            // 
+            this.codigo.HeaderText = "Codigo";
+            this.codigo.Name = "codigo";
+            this.codigo.ReadOnly = true;
+            this.codigo.Width = 73;
+            // 
+            // nombre
+            // 
+            this.nombre.HeaderText = "Nombre";
+            this.nombre.Name = "nombre";
+            this.nombre.ReadOnly = true;
+            this.nombre.Width = 79;
+            // 
+            // precio
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.Format = "C0";
+            dataGridViewCellStyle3.NullValue = null;
+            this.precio.DefaultCellStyle = dataGridViewCellStyle3;
+            this.precio.HeaderText = "Precio";
+            this.precio.Name = "precio";
+            this.precio.ReadOnly = true;
+            this.precio.Width = 69;
+            // 
+            // cantidad
+            // 
+            this.cantidad.HeaderText = "Cantidad";
+            this.cantidad.Name = "cantidad";
+            this.cantidad.Width = 83;
+            // 
+            // desc
+            // 
+            this.desc.HeaderText = "Descuento";
+            this.desc.Name = "desc";
+            this.desc.Width = 93;
+            // 
+            // total
+            // 
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.NullValue = null;
+            this.total.DefaultCellStyle = dataGridViewCellStyle4;
+            this.total.HeaderText = "Total";
+            this.total.Name = "total";
+            this.total.ReadOnly = true;
+            this.total.Width = 61;
             // 
             // tableLayoutPanel9
             // 
@@ -742,98 +828,6 @@
             this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             // 
-            // elimina
-            // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Red;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Red;
-            this.elimina.DefaultCellStyle = dataGridViewCellStyle2;
-            this.elimina.HeaderText = "Quitar";
-            this.elimina.Name = "elimina";
-            this.elimina.ReadOnly = true;
-            this.elimina.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.elimina.Text = "Quitar";
-            this.elimina.Width = 48;
-            // 
-            // item
-            // 
-            this.item.HeaderText = "Item";
-            this.item.Name = "item";
-            this.item.ReadOnly = true;
-            this.item.Width = 58;
-            // 
-            // codigo
-            // 
-            this.codigo.HeaderText = "Codigo";
-            this.codigo.Name = "codigo";
-            this.codigo.ReadOnly = true;
-            this.codigo.Width = 73;
-            // 
-            // nombre
-            // 
-            this.nombre.HeaderText = "Nombre";
-            this.nombre.Name = "nombre";
-            this.nombre.ReadOnly = true;
-            this.nombre.Width = 79;
-            // 
-            // precio
-            // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.Format = "C0";
-            dataGridViewCellStyle3.NullValue = null;
-            this.precio.DefaultCellStyle = dataGridViewCellStyle3;
-            this.precio.HeaderText = "Precio";
-            this.precio.Name = "precio";
-            this.precio.ReadOnly = true;
-            this.precio.Width = 69;
-            // 
-            // cantidad
-            // 
-            this.cantidad.HeaderText = "Cantidad";
-            this.cantidad.Name = "cantidad";
-            this.cantidad.Width = 83;
-            // 
-            // desc
-            // 
-            this.desc.HeaderText = "Descuento";
-            this.desc.Name = "desc";
-            this.desc.Width = 93;
-            // 
-            // total
-            // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.NullValue = null;
-            this.total.DefaultCellStyle = dataGridViewCellStyle4;
-            this.total.HeaderText = "Total";
-            this.total.Name = "total";
-            this.total.ReadOnly = true;
-            this.total.Width = 61;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(55, 78);
-            this.label2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(75, 16);
-            this.label2.TabIndex = 30;
-            this.label2.Text = "IMP. ADIC.";
-            // 
-            // labelMtoTotal
-            // 
-            this.labelMtoTotal.AutoSize = true;
-            this.labelMtoTotal.Dock = System.Windows.Forms.DockStyle.Right;
-            this.labelMtoTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelMtoTotal.Location = new System.Drawing.Point(243, 98);
-            this.labelMtoTotal.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.labelMtoTotal.Name = "labelMtoTotal";
-            this.labelMtoTotal.Size = new System.Drawing.Size(16, 53);
-            this.labelMtoTotal.TabIndex = 31;
-            this.labelMtoTotal.Text = "0";
-            // 
             // frmPuntoVenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -883,17 +877,15 @@
         public System.Windows.Forms.Label lblNomCliente;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        public System.Windows.Forms.Label labelTelefono;
-        public System.Windows.Forms.Label labelGiro;
-        public System.Windows.Forms.Label labelNombre;
+        public System.Windows.Forms.Label labelTelefonoRecep;
+        public System.Windows.Forms.Label labelGiroRecep;
+        public System.Windows.Forms.Label labelRznSocRecep;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
-        public System.Windows.Forms.Label labelCiudad;
-        public System.Windows.Forms.Label labelComuna;
-        public System.Windows.Forms.Label labelDireccion;
+        public System.Windows.Forms.Label labelCiudadRecep;
+        public System.Windows.Forms.Label labelComunaRecep;
+        public System.Windows.Forms.Label labelDireccionRecep;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.Button btnSalir;
-        private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Button btnPrint;
         public System.Windows.Forms.DataGridView dtgwDetalle;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         public System.Windows.Forms.Label label6;
@@ -916,7 +908,7 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.PictureBox pictureBox3;
-        public System.Windows.Forms.TextBox textBoxRut;
+        public System.Windows.Forms.TextBox textBoxRutRecep;
         private System.Windows.Forms.Button buttonBuscaCliente;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
         public System.Windows.Forms.Button buttonBuscaProducto;
@@ -932,5 +924,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn total;
         public System.Windows.Forms.Label label2;
         public System.Windows.Forms.Label labelMtoTotal;
+        private System.Windows.Forms.Button buttonGuardar;
+        private System.Windows.Forms.Button button2;
     }
 }

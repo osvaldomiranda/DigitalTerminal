@@ -42,10 +42,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseDato.cs" />
+    <Compile Include="ClienteProductoModel.cs" />
     <Compile Include="ContribuyenteModel.cs" />
     <Compile Include="CiudadesModel.cs" />
     <Compile Include="ComunasModel.cs" />
     <Compile Include="DocumentoModel.cs" />
+    <Compile Include="EmpresaModel.cs" />
     <Compile Include="PaisesModel.cs" />
     <Compile Include="ProductosModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

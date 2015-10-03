@@ -85,7 +85,7 @@ namespace Vista
 
      public void frmPuntoVenta_Load(object sender, EventArgs e)
         {
-            this.textBoxRut.Select();
+            this.textBoxRutRecep.Select();
         }
 
 
@@ -110,24 +110,24 @@ namespace Vista
      {
          if (e.KeyChar == (int)13)
          {
-             if (textBoxRut.Text != "")
+             if (textBoxRutRecep.Text != "")
              {
-                 dataTableCliente = cliente.getContribuyente(textBoxRut.Text);
+                 dataTableCliente = cliente.getContribuyente(textBoxRutRecep.Text);
                  if (dataTableCliente.Rows.Count != 0)
                  {
-                     labelNombre.Text = dataTableCliente.Rows[0][1].ToString();
-                     labelGiro.Text = dataTableCliente.Rows[0][2].ToString();
-                     labelDireccion.Text = dataTableCliente.Rows[0][3].ToString();
-                     labelCiudad.Text = dataTableCliente.Rows[0][8].ToString();
-                     labelComuna.Text = dataTableCliente.Rows[0][11].ToString();              
-                     labelTelefono.Text = dataTableCliente.Rows[0][6].ToString();
-                     textBoxRut.Enabled = false;
+                     labelRznSocRecep.Text = dataTableCliente.Rows[0][1].ToString();
+                     labelGiroRecep.Text = dataTableCliente.Rows[0][2].ToString();
+                     labelDireccionRecep.Text = dataTableCliente.Rows[0][3].ToString();
+                     labelCiudadRecep.Text = dataTableCliente.Rows[0][8].ToString();
+                     labelComunaRecep.Text = dataTableCliente.Rows[0][11].ToString();              
+                     labelTelefonoRecep.Text = dataTableCliente.Rows[0][6].ToString();
+                     textBoxRutRecep.Enabled = false;
                      textBoxCodBarra.Select();
                  }
                  else
                  {
                      MessageBox.Show("No esta Registrado el cliente");
-                     textBoxRut.Text = "";
+                     textBoxRutRecep.Text = "";
                      // TODO verificar rut
                  }
              }
@@ -142,7 +142,7 @@ namespace Vista
 
      private void textBoxRut_Validated(object sender, EventArgs e)
      {
-         textBoxRut.Text = new MetodosComunes().formatearRut(textBoxRut.Text.ToUpper());
+         textBoxRutRecep.Text = new MetodosComunes().formatearRut(textBoxRutRecep.Text.ToUpper());
      }
 
 
@@ -194,7 +194,64 @@ namespace Vista
             string total = labelMtoTotal.Text.Replace(".", "");
             Decimal iva   =  (Convert.ToDecimal(total) * 19)/100;
             labelIva.Text = iva.ToString("N0", CultureInfo.CreateSpecificCulture("es-ES"));
+            labelSubTotal.Text = (Convert.ToDecimal(total) - iva).ToString();
 
+        }
+
+        private void buttonGuardar_Click(object sender, EventArgs e)
+        {
+            new DocumentoModel().serialize(cargaDocumento());               
+        }
+
+
+        private DocumentoModel cargaDocumento()
+        {
+            EmpresaModel empresa = new EmpresaModel();
+            empresa.getEmpresa();
+            DocumentoModel documento = new DocumentoModel();
+            documento.TipoDTE = 33; // cod pedido TODO
+            documento.Folio = 1; // TODO recuperaultimo folio(tipoDte);
+            // Cargo Datos Emisor
+            documento.RUTEmisor = empresa.Rut;
+            documento.RznSoc = empresa.RazonSocial;
+            documento.GiroEmis = empresa.GiroEmisor;
+            documento.CdgSIISucur = empresa.CodigoSiiSucursal;
+            documento.Telefono = empresa.Telefono;
+            documento.CorreoEmisor = empresa.Correo;
+            documento.Acteco = empresa.Acteco;
+            documento.DirOrigen = empresa.DireccionOrigen;
+            documento.CmnaOrigen = empresa.ComunaOrigen;
+            documento.CiudadOrigen = empresa.CiudadOrigen;
+            // Datos Receptor
+            documento.RUTRecep = this.textBoxRutRecep.Text;
+            documento.RznSocRecep = this.labelRznSocRecep.Text;
+            documento.GiroRecep = this.labelGiroRecep.Text;
+            documento.DirRecep = this.labelDireccionRecep.Text;
+            documento.CmnaRecep = this.labelComunaRecep.Text;
+            documento.CiudadRecep = this.labelCiudadRecep.Text;
+            documento.TelRecep = this.labelTelefonoRecep.Text;
+            documento.FchEmis = DateTime.Today.ToString("yyyy-MM-dd");
+            List<Detalle> detalles = new List<Detalle>();
+            //cargo detalle doc
+            for (int i = 0; i < dtgwDetalle.RowCount; i++)
+            {     
+                Detalle detalle = new Detalle();
+                detalle.NroLinDet = Convert.ToInt32(this.dtgwDetalle.Rows[i].Cells[1].Value);
+                detalle.TpoCodigo = "PLU";
+                detalle.VlrCodigo = this.dtgwDetalle.Rows[i].Cells[2].Value.ToString();
+                detalle.NmbItem = this.dtgwDetalle.Rows[i].Cells[3].Value.ToString();
+                detalle.PrcBruItem = Convert.ToDecimal(this.dtgwDetalle.Rows[i].Cells[4].Value.ToString().Replace(".",""));
+                detalle.QtyItem = Convert.ToInt32(this.dtgwDetalle.Rows[i].Cells[5].Value);
+                detalle.DescuentoBruMonto = Convert.ToInt32(this.dtgwDetalle.Rows[i].Cells[6].Value);
+                detalle.MontoBruItem = Convert.ToInt32(this.dtgwDetalle.Rows[i].Cells[7].Value.ToString().Replace(".",""));
+                detalle.FolioDoc = documento.Folio;
+                detalles.Add(detalle);
+            }
+            documento.detalle = detalles;
+            documento.MntNeto = Convert.ToInt32(labelSubTotal.Text);
+            documento.IVA = Convert.ToInt32(labelIva.Text.ToString().Replace(".",""));
+            documento.MntTotal = Convert.ToInt32(labelMtoTotal.Text.ToString().Replace(".", ""));
+            return documento;
         }
 
 
