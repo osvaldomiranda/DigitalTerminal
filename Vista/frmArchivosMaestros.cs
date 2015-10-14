@@ -48,7 +48,7 @@ namespace Vista
 
         private void buttonProductos_Click(object sender, EventArgs e)
         {
-            
+            new frmProductos().ShowDialog();
         }
     }
 }

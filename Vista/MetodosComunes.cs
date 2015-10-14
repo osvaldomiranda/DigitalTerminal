@@ -34,7 +34,20 @@ namespace Vista
             }
         }
 
-       
+        public Int32 getMontoConIva(decimal montoNeto)
+        {
+            Int32 montoConIva = 0;
+            montoConIva = Convert.ToInt32(montoNeto * Convert.ToDecimal(1.19));
+            return montoConIva;
+        }
+
+        public Decimal getMontoSinIva(decimal montoBruto)
+        {
+            Decimal montoSinIva = 0;
+            montoSinIva = Convert.ToDecimal(montoBruto / Convert.ToDecimal(1.19));
+            montoSinIva = Decimal.Round(montoSinIva, 4);
+            return montoSinIva;
+        } 
 
     }
 }

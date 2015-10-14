@@ -75,7 +75,7 @@ namespace Modelo
 
             OdbcCommand select = new OdbcCommand();
             select.Connection = conexion;
-            select.CommandText = "INSERT INTO contribuyente("
+            select.CommandText = "INSERT INTO cliente("
                                 +"\"rutRecep\","
                                 + "\"rznSocRecep\","
                                 +"\"giroRecep\","

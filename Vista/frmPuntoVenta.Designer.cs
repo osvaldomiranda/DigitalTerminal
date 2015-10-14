@@ -30,10 +30,12 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPuntoVenta));
             this.tblpPuntoVenta = new System.Windows.Forms.TableLayoutPanel();
             this.lblNomCliente = new System.Windows.Forms.Label();
@@ -52,8 +54,9 @@
             this.labelMtoTotal = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.btnSalir = new System.Windows.Forms.Button();
+            this.buttonImprimir = new System.Windows.Forms.Button();
+            this.buttonReferencia = new System.Windows.Forms.Button();
             this.buttonGuardar = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.labelCiudadRecep = new System.Windows.Forms.Label();
@@ -69,14 +72,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.dtgwDetalle = new System.Windows.Forms.DataGridView();
-            this.elimina = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.item = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.desc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
             this.buttonBuscaProducto = new System.Windows.Forms.Button();
             this.textBoxCodBarra = new System.Windows.Forms.TextBox();
@@ -89,6 +84,17 @@
             this.label18 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.elimina = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.item = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Precio_Neto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.desc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Monto_Descuento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Total_Neto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tblpPuntoVenta.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
@@ -126,7 +132,7 @@
             this.tblpPuntoVenta.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tblpPuntoVenta.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tblpPuntoVenta.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-            this.tblpPuntoVenta.Size = new System.Drawing.Size(1019, 753);
+            this.tblpPuntoVenta.Size = new System.Drawing.Size(1019, 692);
             this.tblpPuntoVenta.TabIndex = 0;
             // 
             // lblNomCliente
@@ -144,21 +150,24 @@
             // 
             // tableLayoutPanel5
             // 
-            this.tableLayoutPanel5.ColumnCount = 4;
+            this.tableLayoutPanel5.ColumnCount = 5;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 661F));
             this.tableLayoutPanel5.Controls.Add(this.tableLayoutPanel7, 3, 0);
             this.tableLayoutPanel5.Controls.Add(this.btnSalir, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.buttonImprimir, 2, 0);
+            this.tableLayoutPanel5.Controls.Add(this.buttonReferencia, 2, 0);
             this.tableLayoutPanel5.Controls.Add(this.buttonGuardar, 1, 0);
-            this.tableLayoutPanel5.Controls.Add(this.button2, 2, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(7, 478);
             this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 159F));
             this.tableLayoutPanel5.Size = new System.Drawing.Size(1005, 159);
             this.tableLayoutPanel5.TabIndex = 0;
             // 
@@ -210,12 +219,12 @@
             this.label5.AutoSize = true;
             this.label5.Dock = System.Windows.Forms.DockStyle.Right;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(82, 2);
+            this.label5.Location = new System.Drawing.Point(66, 2);
             this.label5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(48, 15);
+            this.label5.Size = new System.Drawing.Size(64, 15);
             this.label5.TabIndex = 20;
-            this.label5.Text = "DCTO.";
+            this.label5.Text = "DCTO. %";
             // 
             // label8
             // 
@@ -246,12 +255,12 @@
             this.labelDctoGlobal.AutoSize = true;
             this.labelDctoGlobal.Dock = System.Windows.Forms.DockStyle.Right;
             this.labelDctoGlobal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDctoGlobal.Location = new System.Drawing.Point(234, 2);
+            this.labelDctoGlobal.Location = new System.Drawing.Point(245, 2);
             this.labelDctoGlobal.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.labelDctoGlobal.Name = "labelDctoGlobal";
-            this.labelDctoGlobal.Size = new System.Drawing.Size(25, 15);
+            this.labelDctoGlobal.Size = new System.Drawing.Size(14, 15);
             this.labelDctoGlobal.TabIndex = 23;
-            this.labelDctoGlobal.Text = "0%";
+            this.labelDctoGlobal.Text = "0";
             // 
             // labelSubTotal
             // 
@@ -357,6 +366,39 @@
             this.btnSalir.UseVisualStyleBackColor = false;
             this.btnSalir.Click += new System.EventHandler(this.button2_Click);
             // 
+            // buttonImprimir
+            // 
+            this.buttonImprimir.FlatAppearance.BorderSize = 2;
+            this.buttonImprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonImprimir.ForeColor = System.Drawing.Color.Green;
+            this.buttonImprimir.Image = global::Vista.Properties.Resources.printer_32;
+            this.buttonImprimir.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.buttonImprimir.Location = new System.Drawing.Point(175, 3);
+            this.buttonImprimir.Name = "buttonImprimir";
+            this.buttonImprimir.Size = new System.Drawing.Size(80, 63);
+            this.buttonImprimir.TabIndex = 21;
+            this.buttonImprimir.Text = "IMPRIMIR";
+            this.buttonImprimir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.buttonImprimir.UseVisualStyleBackColor = true;
+            this.buttonImprimir.Click += new System.EventHandler(this.buttonImprimir_Click);
+            // 
+            // buttonReferencia
+            // 
+            this.buttonReferencia.FlatAppearance.BorderSize = 2;
+            this.buttonReferencia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonReferencia.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonReferencia.ForeColor = System.Drawing.Color.Green;
+            this.buttonReferencia.Image = global::Vista.Properties.Resources.purchase_order_32;
+            this.buttonReferencia.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.buttonReferencia.Location = new System.Drawing.Point(261, 3);
+            this.buttonReferencia.Name = "buttonReferencia";
+            this.buttonReferencia.Size = new System.Drawing.Size(80, 63);
+            this.buttonReferencia.TabIndex = 20;
+            this.buttonReferencia.Text = "REFERENCIA";
+            this.buttonReferencia.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.buttonReferencia.UseVisualStyleBackColor = true;
+            this.buttonReferencia.Click += new System.EventHandler(this.buttonReferencia_Click);
+            // 
             // buttonGuardar
             // 
             this.buttonGuardar.FlatAppearance.BorderSize = 2;
@@ -372,21 +414,6 @@
             this.buttonGuardar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.buttonGuardar.UseVisualStyleBackColor = true;
             this.buttonGuardar.Click += new System.EventHandler(this.buttonGuardar_Click);
-            // 
-            // button2
-            // 
-            this.button2.FlatAppearance.BorderSize = 2;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.ForeColor = System.Drawing.Color.Green;
-            this.button2.Image = global::Vista.Properties.Resources.printer_32;
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button2.Location = new System.Drawing.Point(175, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(80, 63);
-            this.button2.TabIndex = 20;
-            this.button2.Text = "IMPRIMIR";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button2.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel2
             // 
@@ -598,96 +625,31 @@
             this.item,
             this.codigo,
             this.nombre,
+            this.Precio_Neto,
             this.precio,
             this.cantidad,
             this.desc,
+            this.Monto_Descuento,
+            this.Total_Neto,
             this.total});
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(2);
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgwDetalle.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle7.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgwDetalle.DefaultCellStyle = dataGridViewCellStyle7;
             this.dtgwDetalle.Dock = System.Windows.Forms.DockStyle.Top;
             this.dtgwDetalle.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dtgwDetalle.Location = new System.Drawing.Point(3, 48);
             this.dtgwDetalle.Name = "dtgwDetalle";
             this.dtgwDetalle.RowHeadersVisible = false;
-            this.dtgwDetalle.Size = new System.Drawing.Size(999, 226);
+            this.dtgwDetalle.Size = new System.Drawing.Size(999, 240);
             this.dtgwDetalle.TabIndex = 0;
             this.dtgwDetalle.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgwDetalle_CellEndEdit);
             this.dtgwDetalle.Validated += new System.EventHandler(this.dtgwDetalle_Validated);
-            // 
-            // elimina
-            // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Red;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Red;
-            this.elimina.DefaultCellStyle = dataGridViewCellStyle2;
-            this.elimina.HeaderText = "Quitar";
-            this.elimina.Name = "elimina";
-            this.elimina.ReadOnly = true;
-            this.elimina.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.elimina.Text = "Quitar";
-            this.elimina.Width = 48;
-            // 
-            // item
-            // 
-            this.item.HeaderText = "Item";
-            this.item.Name = "item";
-            this.item.ReadOnly = true;
-            this.item.Width = 58;
-            // 
-            // codigo
-            // 
-            this.codigo.HeaderText = "Codigo";
-            this.codigo.Name = "codigo";
-            this.codigo.ReadOnly = true;
-            this.codigo.Width = 73;
-            // 
-            // nombre
-            // 
-            this.nombre.HeaderText = "Nombre";
-            this.nombre.Name = "nombre";
-            this.nombre.ReadOnly = true;
-            this.nombre.Width = 79;
-            // 
-            // precio
-            // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.Format = "C0";
-            dataGridViewCellStyle3.NullValue = null;
-            this.precio.DefaultCellStyle = dataGridViewCellStyle3;
-            this.precio.HeaderText = "Precio";
-            this.precio.Name = "precio";
-            this.precio.ReadOnly = true;
-            this.precio.Width = 69;
-            // 
-            // cantidad
-            // 
-            this.cantidad.HeaderText = "Cantidad";
-            this.cantidad.Name = "cantidad";
-            this.cantidad.Width = 83;
-            // 
-            // desc
-            // 
-            this.desc.HeaderText = "Descuento";
-            this.desc.Name = "desc";
-            this.desc.Width = 93;
-            // 
-            // total
-            // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.NullValue = null;
-            this.total.DefaultCellStyle = dataGridViewCellStyle4;
-            this.total.HeaderText = "Total";
-            this.total.Name = "total";
-            this.total.ReadOnly = true;
-            this.total.Width = 61;
             // 
             // tableLayoutPanel9
             // 
@@ -765,7 +727,7 @@
             this.tableLayoutPanel8.Name = "tableLayoutPanel8";
             this.tableLayoutPanel8.RowCount = 1;
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(492, 101);
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(492, 40);
             this.tableLayoutPanel8.TabIndex = 17;
             // 
             // label16
@@ -782,7 +744,7 @@
             this.pictureBox1.Image = global::Vista.Properties.Resources.search_16;
             this.pictureBox1.Location = new System.Drawing.Point(136, 3);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(22, 22);
+            this.pictureBox1.Size = new System.Drawing.Size(22, 19);
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
@@ -800,7 +762,7 @@
             this.pictureBox2.Image = global::Vista.Properties.Resources.plus_5_16;
             this.pictureBox2.Location = new System.Drawing.Point(306, 3);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(23, 22);
+            this.pictureBox2.Size = new System.Drawing.Size(23, 19);
             this.pictureBox2.TabIndex = 4;
             this.pictureBox2.TabStop = false;
             // 
@@ -818,7 +780,7 @@
             this.pictureBox3.Image = global::Vista.Properties.Resources.save_16;
             this.pictureBox3.Location = new System.Drawing.Point(456, 3);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(23, 22);
+            this.pictureBox3.Size = new System.Drawing.Size(23, 19);
             this.pictureBox3.TabIndex = 5;
             this.pictureBox3.TabStop = false;
             // 
@@ -828,12 +790,102 @@
             this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             // 
+            // elimina
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Red;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Red;
+            this.elimina.DefaultCellStyle = dataGridViewCellStyle2;
+            this.elimina.HeaderText = "Quitar";
+            this.elimina.Name = "elimina";
+            this.elimina.ReadOnly = true;
+            this.elimina.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.elimina.Text = "Quitar";
+            this.elimina.Width = 48;
+            // 
+            // item
+            // 
+            this.item.HeaderText = "Item";
+            this.item.Name = "item";
+            this.item.ReadOnly = true;
+            this.item.Width = 58;
+            // 
+            // codigo
+            // 
+            this.codigo.HeaderText = "Codigo";
+            this.codigo.Name = "codigo";
+            this.codigo.ReadOnly = true;
+            this.codigo.Width = 73;
+            // 
+            // nombre
+            // 
+            this.nombre.HeaderText = "Nombre";
+            this.nombre.Name = "nombre";
+            this.nombre.ReadOnly = true;
+            this.nombre.Width = 79;
+            // 
+            // Precio_Neto
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.Precio_Neto.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Precio_Neto.HeaderText = "Precio_Neto";
+            this.Precio_Neto.Name = "Precio_Neto";
+            this.Precio_Neto.Width = 102;
+            // 
+            // precio
+            // 
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.Format = "C0";
+            dataGridViewCellStyle4.NullValue = null;
+            this.precio.DefaultCellStyle = dataGridViewCellStyle4;
+            this.precio.HeaderText = "Precio_Venta";
+            this.precio.Name = "precio";
+            this.precio.ReadOnly = true;
+            this.precio.Width = 107;
+            // 
+            // cantidad
+            // 
+            this.cantidad.HeaderText = "Cantidad";
+            this.cantidad.Name = "cantidad";
+            this.cantidad.Width = 83;
+            // 
+            // desc
+            // 
+            this.desc.HeaderText = "Descuento";
+            this.desc.Name = "desc";
+            this.desc.Width = 93;
+            // 
+            // Monto_Descuento
+            // 
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.Monto_Descuento.DefaultCellStyle = dataGridViewCellStyle5;
+            this.Monto_Descuento.HeaderText = "Monto_Descuento";
+            this.Monto_Descuento.Name = "Monto_Descuento";
+            this.Monto_Descuento.Width = 135;
+            // 
+            // Total_Neto
+            // 
+            this.Total_Neto.HeaderText = "Total_Neto";
+            this.Total_Neto.Name = "Total_Neto";
+            this.Total_Neto.Width = 94;
+            // 
+            // total
+            // 
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle6.NullValue = null;
+            this.total.DefaultCellStyle = dataGridViewCellStyle6;
+            this.total.HeaderText = "Total";
+            this.total.Name = "total";
+            this.total.ReadOnly = true;
+            this.total.Width = 61;
+            // 
             // frmPuntoVenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1019, 753);
+            this.ClientSize = new System.Drawing.Size(1019, 692);
             this.Controls.Add(this.tblpPuntoVenta);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -914,17 +966,21 @@
         public System.Windows.Forms.Button buttonBuscaProducto;
         private System.Windows.Forms.TextBox textBoxCodBarra;
         private System.Windows.Forms.Label label1;
+        public System.Windows.Forms.Label label2;
+        public System.Windows.Forms.Label labelMtoTotal;
+        private System.Windows.Forms.Button buttonGuardar;
+        private System.Windows.Forms.Button buttonImprimir;
+        private System.Windows.Forms.Button buttonReferencia;
         private System.Windows.Forms.DataGridViewButtonColumn elimina;
         private System.Windows.Forms.DataGridViewTextBoxColumn item;
         private System.Windows.Forms.DataGridViewTextBoxColumn codigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Precio_Neto;
         private System.Windows.Forms.DataGridViewTextBoxColumn precio;
         private System.Windows.Forms.DataGridViewTextBoxColumn cantidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn desc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Monto_Descuento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Total_Neto;
         private System.Windows.Forms.DataGridViewTextBoxColumn total;
-        public System.Windows.Forms.Label label2;
-        public System.Windows.Forms.Label labelMtoTotal;
-        private System.Windows.Forms.Button buttonGuardar;
-        private System.Windows.Forms.Button button2;
     }
 }

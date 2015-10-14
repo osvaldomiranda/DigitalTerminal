@@ -14,17 +14,19 @@ namespace Modelo
         public String nombre { get; set; }
         public String codigoInt { get; set; }
         public decimal precioNeto { get; set; }
+        public Int32 precioventa { get; set; }
 
         public ProductosModel()
         {
         }
 
-        public ProductosModel(int id, String nombre, String codigoInt, decimal precioNeto)
+        public ProductosModel(int id, String nombre, String codigoInt, decimal precioNeto, Int32 precioVenta)
         {
             this.id = id;
             this.nombre = nombre;
             this.codigoInt = codigoInt;
             this.precioNeto = precioNeto;
+            this.precioventa = precioventa;
 
         }
 
@@ -57,7 +59,6 @@ namespace Modelo
 
             return datatable;
         }
-
 
         public DataTable getProdXCod(String codProd)
         {
@@ -117,6 +118,38 @@ namespace Modelo
             }
 
             return datatable;
+        }
+
+        public void save(ProductosModel producto)
+        {
+            try
+            {
+                BaseDato con = new BaseDato();
+                OdbcConnection conexion = con.ConnectPostgres();
+                OdbcCommand select = new OdbcCommand();
+                select.Connection = conexion;
+                select.CommandText = 
+                                     "INSERT INTO producto("
+                                   // +"id, "
+                                    +"nombre, "
+                                    +"\"codigoInt\", "
+                                    +"\"precioNeto\", "
+                                    +"\"precioVenta\""
+                                   //+"codimpuesto "
+                                    +") VALUES ('"
+                                    //+ producto.id +",'"//"id, "
+                                    + producto.nombre + "','"//"nombre, "
+                                    + producto.codigoInt + "',"//"\"codigoInt\", "
+                                    + producto.precioNeto + ","//"\"precioNeto\", "
+                                    + producto.precioventa + ""//"\"precioVenta\", "
+                                   // + "codimpuesto "
+                                    +");";
+                OdbcDataReader reader = select.ExecuteReader();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error" + ex.Message);
+            }
         }
 
         

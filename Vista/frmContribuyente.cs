@@ -86,7 +86,7 @@ namespace Vista
         private void btnSave_Click(object sender, EventArgs e)
         {
             string rut = textBoxRutCliente.Text.ToUpper();
-            clienteM.rut = rut.Replace("-", "");
+            clienteM.rut = rut;
             clienteM.rznSoc = textBoxRazonSocial.Text.ToUpper();
             clienteM.giro = textBoxGiro.Text.ToUpper();
             clienteM.direccion = textBoxDireccion.Text.ToUpper();

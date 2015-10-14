@@ -16,6 +16,10 @@ namespace Vista
         int n = 0;
         ContribuyenteModel cliente= new ContribuyenteModel();
         DataTable dataTableCliente = new DataTable();
+        DocumentoModel documento = new DocumentoModel();
+        Detalle detalle = new Detalle();
+        ReferenciaDoc referencia = new ReferenciaDoc();
+        folioModel folio = new folioModel();
         
         public frmPuntoVenta()
         {
@@ -159,17 +163,20 @@ namespace Vista
      }
 
 
-     public void AddProducto(ProductosModel producto, int cantidad, string total)
+     public void AddProducto(ProductosModel producto, Detalle detalle)
      {
          n = this.dtgwDetalle.Rows.Add();
          this.dtgwDetalle.Rows[n].Cells[0].Value = "-";
-         this.dtgwDetalle.Rows[n].Cells[1].Value = n + 1;
+         this.dtgwDetalle.Rows[n].Cells[1].Value =  n + 1;
          this.dtgwDetalle.Rows[n].Cells[2].Value =  producto.codigoInt.ToString(); 
          this.dtgwDetalle.Rows[n].Cells[3].Value =  producto.nombre.ToString();
-         this.dtgwDetalle.Rows[n].Cells[4].Value = producto.precioNeto.ToString("N0", CultureInfo.CreateSpecificCulture("es-ES"));
-         this.dtgwDetalle.Rows[n].Cells[5].Value =  cantidad;
-         this.dtgwDetalle.Rows[n].Cells[6].Value = "0";
-         this.dtgwDetalle.Rows[n].Cells[7].Value =  Convert.ToDecimal(total).ToString("N0", CultureInfo.CreateSpecificCulture("es-ES"));
+         this.dtgwDetalle.Rows[n].Cells[4].Value =  producto.precioNeto.ToString();
+         this.dtgwDetalle.Rows[n].Cells[5].Value =  producto.precioventa.ToString("N0", CultureInfo.CreateSpecificCulture("es-ES"));
+         this.dtgwDetalle.Rows[n].Cells[6].Value =  detalle.QtyItem.ToString();
+         this.dtgwDetalle.Rows[n].Cells[7].Value =  Decimal.Round(detalle.DescuentoPct*100);
+         this.dtgwDetalle.Rows[n].Cells[8].Value = detalle.DescuentoMonto.ToString("N0", CultureInfo.CreateSpecificCulture("es-ES"));
+         this.dtgwDetalle.Rows[n].Cells[9].Value =  detalle.MontoItem.ToString("N0", CultureInfo.CreateSpecificCulture("es-ES"));
+         this.dtgwDetalle.Rows[n].Cells[10].Value = detalle.MontoBruItem.ToString("N0", CultureInfo.CreateSpecificCulture("es-ES"));
          actualizaTotal();
      }
 
@@ -183,75 +190,119 @@ namespace Vista
          Decimal suma = 0;
          for (int i = 0; i < dtgwDetalle.RowCount; i++)
          {
-             suma += Convert.ToDecimal(this.dtgwDetalle.Rows[i].Cells[7].Value);
+             suma += Convert.ToDecimal(this.dtgwDetalle.Rows[i].Cells[10].Value.ToString().Replace(".",""));
          }
-         labelMtoTotal.Text = suma.ToString();
+         labelMtoTotal.Text = suma.ToString("N0", CultureInfo.CreateSpecificCulture("es-ES"));
          calculaIva();
      }
 
         private void calculaIva()
         {
             string total = labelMtoTotal.Text.Replace(".", "");
-            Decimal iva   =  (Convert.ToDecimal(total) * 19)/100;
-            labelIva.Text = iva.ToString("N0", CultureInfo.CreateSpecificCulture("es-ES"));
-            labelSubTotal.Text = (Convert.ToDecimal(total) - iva).ToString();
-
+            labelSubTotal.Text = (Convert.ToDecimal(total) / Convert.ToDecimal(1.19)).ToString("N0", CultureInfo.CreateSpecificCulture("es-ES"));
+            labelIva.Text = (Convert.ToInt32(total) - Convert.ToInt32(labelSubTotal.Text.Replace(".", ""))).ToString("N0", CultureInfo.CreateSpecificCulture("es-ES")); 
         }
 
         private void buttonGuardar_Click(object sender, EventArgs e)
         {
-            new DocumentoModel().serialize(cargaDocumento());               
+            try
+            {
+                documento.serialize(cargaDocumento());
+                documento.save(documento);
+                detalle.save(documento);
+                referencia.save(documento);
+                folio.modificaEstado("JSON CREADO", documento.Folio);
+                MessageBox.Show("El Documento se guardo");
+               
+
+            }
+            catch(Exception err)
+            {
+                MessageBox.Show("" + err);
+            }
         }
 
 
         private DocumentoModel cargaDocumento()
         {
-            EmpresaModel empresa = new EmpresaModel();
-            empresa.getEmpresa();
-            DocumentoModel documento = new DocumentoModel();
-            documento.TipoDTE = 33; // cod pedido TODO
-            documento.Folio = 1; // TODO recuperaultimo folio(tipoDte);
-            // Cargo Datos Emisor
-            documento.RUTEmisor = empresa.Rut;
-            documento.RznSoc = empresa.RazonSocial;
-            documento.GiroEmis = empresa.GiroEmisor;
-            documento.CdgSIISucur = empresa.CodigoSiiSucursal;
-            documento.Telefono = empresa.Telefono;
-            documento.CorreoEmisor = empresa.Correo;
-            documento.Acteco = empresa.Acteco;
-            documento.DirOrigen = empresa.DireccionOrigen;
-            documento.CmnaOrigen = empresa.ComunaOrigen;
-            documento.CiudadOrigen = empresa.CiudadOrigen;
-            // Datos Receptor
-            documento.RUTRecep = this.textBoxRutRecep.Text;
-            documento.RznSocRecep = this.labelRznSocRecep.Text;
-            documento.GiroRecep = this.labelGiroRecep.Text;
-            documento.DirRecep = this.labelDireccionRecep.Text;
-            documento.CmnaRecep = this.labelComunaRecep.Text;
-            documento.CiudadRecep = this.labelCiudadRecep.Text;
-            documento.TelRecep = this.labelTelefonoRecep.Text;
-            documento.FchEmis = DateTime.Today.ToString("yyyy-MM-dd");
-            List<Detalle> detalles = new List<Detalle>();
-            //cargo detalle doc
-            for (int i = 0; i < dtgwDetalle.RowCount; i++)
-            {     
-                Detalle detalle = new Detalle();
-                detalle.NroLinDet = Convert.ToInt32(this.dtgwDetalle.Rows[i].Cells[1].Value);
-                detalle.TpoCodigo = "PLU";
-                detalle.VlrCodigo = this.dtgwDetalle.Rows[i].Cells[2].Value.ToString();
-                detalle.NmbItem = this.dtgwDetalle.Rows[i].Cells[3].Value.ToString();
-                detalle.PrcBruItem = Convert.ToDecimal(this.dtgwDetalle.Rows[i].Cells[4].Value.ToString().Replace(".",""));
-                detalle.QtyItem = Convert.ToInt32(this.dtgwDetalle.Rows[i].Cells[5].Value);
-                detalle.DescuentoBruMonto = Convert.ToInt32(this.dtgwDetalle.Rows[i].Cells[6].Value);
-                detalle.MontoBruItem = Convert.ToInt32(this.dtgwDetalle.Rows[i].Cells[7].Value.ToString().Replace(".",""));
-                detalle.FolioDoc = documento.Folio;
-                detalles.Add(detalle);
+
+            try
+            {
+                EmpresaModel empresa = new EmpresaModel();
+                empresa.getEmpresa();
+
+                documento.TipoDTE = 33; // cod pedido TODO
+                documento.Folio = folio.getUltimoFolio();
+                // Cargo Datos Emisor
+                documento.RUTEmisor = empresa.Rut;
+                documento.RznSoc = empresa.RazonSocial;
+                documento.GiroEmis = empresa.GiroEmisor;
+                documento.CdgSIISucur = empresa.CodigoSiiSucursal;
+                documento.Telefono = empresa.Telefono;
+                documento.CorreoEmisor = empresa.Correo;
+                documento.Acteco = empresa.Acteco;
+                documento.DirOrigen = empresa.DireccionOrigen;
+                documento.CmnaOrigen = empresa.ComunaOrigen;
+                documento.CiudadOrigen = empresa.CiudadOrigen;
+                // Datos Receptor
+                documento.RUTRecep = this.textBoxRutRecep.Text;
+                documento.RznSocRecep = this.labelRznSocRecep.Text;
+                documento.GiroRecep = this.labelGiroRecep.Text;
+                documento.DirRecep = this.labelDireccionRecep.Text;
+                documento.CmnaRecep = this.labelComunaRecep.Text;
+                documento.CiudadRecep = this.labelCiudadRecep.Text;
+                documento.TelRecep = this.labelTelefonoRecep.Text;
+                documento.FchEmis = DateTime.Today.ToString("yyyy-MM-dd");  
+                List<Detalle> detalles = new List<Detalle>();
+                //cargo detalle doc
+                for (int i = 0; i < dtgwDetalle.RowCount; i++)
+                {
+                    Detalle detalle = new Detalle();
+                    detalle.NroLinDet = Convert.ToInt32(this.dtgwDetalle.Rows[i].Cells[1].Value);
+                    detalle.TpoCodigo = "PLU";
+                    detalle.VlrCodigo = this.dtgwDetalle.Rows[i].Cells[2].Value.ToString();
+                    detalle.NmbItem = this.dtgwDetalle.Rows[i].Cells[3].Value.ToString();
+                    detalle.PrcItem = Convert.ToDecimal(this.dtgwDetalle.Rows[i].Cells[4].Value.ToString());
+                    detalle.PrcBruItem = Convert.ToDecimal(this.dtgwDetalle.Rows[i].Cells[5].Value.ToString().Replace(".", ""));
+                    detalle.QtyItem = Convert.ToInt32(this.dtgwDetalle.Rows[i].Cells[6].Value);
+                    detalle.DescuentoPct = Convert.ToInt32(this.dtgwDetalle.Rows[i].Cells[7].Value);
+                    detalle.DescuentoMonto = Convert.ToInt32(this.dtgwDetalle.Rows[i].Cells[8].Value.ToString().Replace(".", ""));
+                    detalle.MontoItem = Convert.ToInt32(this.dtgwDetalle.Rows[i].Cells[9].Value.ToString().Replace(".",""));
+                    detalle.MontoBruItem = Convert.ToInt32(this.dtgwDetalle.Rows[i].Cells[10].Value.ToString().Replace(".", ""));
+                    detalles.Add(detalle);
+                }
+                //Cargo los descuentos globales
+                List<DscRcgGlobal> descuentosGlobales = new List<DscRcgGlobal>();
+                DscRcgGlobal descuentoGlobal = new DscRcgGlobal();
+                descuentoGlobal.NroLinDR = 0;
+                descuentoGlobal.TpoMov = "";
+                descuentoGlobal.GlosaDR = "";
+                descuentoGlobal.TpoValor = "";
+                descuentoGlobal.ValorDR = 0;
+                descuentoGlobal.IndExeDR = Convert.ToInt32(labelDctoGlobal.Text);
+                descuentosGlobales.Add(descuentoGlobal);
+                documento.detalle = detalles;
+                documento.TasaIVA = 19;
+                documento.dscRcgGlobal = descuentosGlobales;
+                documento.MntNeto = Convert.ToInt32(labelSubTotal.Text.ToString().Replace(".", ""));
+                documento.IVA = Convert.ToInt32(labelIva.Text.ToString().Replace(".", ""));
+                documento.MntTotal = Convert.ToInt32(labelMtoTotal.Text.ToString().Replace(".", ""));
+                return documento;
             }
-            documento.detalle = detalles;
-            documento.MntNeto = Convert.ToInt32(labelSubTotal.Text);
-            documento.IVA = Convert.ToInt32(labelIva.Text.ToString().Replace(".",""));
-            documento.MntTotal = Convert.ToInt32(labelMtoTotal.Text.ToString().Replace(".", ""));
-            return documento;
+            catch(Exception e)
+            {
+                return documento;
+            }
+        }
+
+        private void buttonReferencia_Click(object sender, EventArgs e)
+        {
+            new frmReferencia(documento).ShowDialog();
+        }
+
+        private void buttonImprimir_Click(object sender, EventArgs e)
+        {
+
         }
 
 

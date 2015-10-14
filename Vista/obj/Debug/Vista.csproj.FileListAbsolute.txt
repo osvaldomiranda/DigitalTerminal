@@ -20,3 +20,4 @@ C:\Users\Mauricio\Documents\Visual Studio 2010\Projects\DigitalTerminal\Vista\ob
 C:\Users\Mauricio\Documents\Visual Studio 2010\Projects\DigitalTerminal\Vista\obj\Debug\Vista.dll
 C:\Users\Mauricio\Documents\Visual Studio 2010\Projects\DigitalTerminal\Vista\obj\Debug\Vista.pdb
 C:\Users\Mauricio\Documents\Visual Studio 2010\Projects\DigitalTerminal\Vista\obj\Debug\Vista.frmProductos.resources
+C:\Users\Mauricio\Documents\Visual Studio 2010\Projects\DigitalTerminal\Vista\obj\Debug\Vista.frmReferencia.resources

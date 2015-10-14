@@ -274,132 +274,20 @@ namespace Modelo
 
         public void save(DocumentoModel documento)
         {
-
+             MemoryStream stream = new MemoryStream();
+            DataContractJsonSerializer ds = new DataContractJsonSerializer(typeof(DocumentoModel));
+            ds.WriteObject(stream, documento);
+            string jsonString = Encoding.UTF8.GetString(stream.ToArray());
+            stream.Close();
+            String json = jsonString.Replace("null", "\"\"");
             try
             {
                 BaseDato con = new BaseDato();
                 OdbcConnection conexion = con.ConnectPostgres();
-
                 OdbcCommand select = new OdbcCommand();
                 select.Connection = conexion;
-                select.CommandText =
-                    "INSERT INTO documento("
-                    + "tipodte, "       
-                    + "folio, "        
-                    + "fchemis, "       
-                    + "indnorebaja, "   
-                    + "tipodespacho, "  
-                    + "indtraslado, "   
-                   // + "mntcancel, "     
-                   // + "saldoinsol, "    
-                   // + "periododesde, "  
-                   // + "periodohasta, "  
-                   // + "mediopago,"      
-                   // + "tipoctapago, "   
-                   // + "numctapago, "    
-                   // + "bcopago, "       
-                   // + "termpagocdg, "   
-                   // + "termpagoglosa, " 
-                   // + "termpagodias, "  
-                   // + "fchvenc, "       
-                    + "rutemisor, "     
-                    + "rznsoc, "        
-                    + "giroemis, "      
-                    + "telefono, "      
-                    + "correoemisor, "  
-                    + "acteco, "        
-                    + "cdgtraslado, "   
-                    + "folioaut, "      
-                    + "fchaut, "        
-                    + "sucursal, "      
-                    + "cdgsiisucur, "   
-                    + "codadicsucur, "  
-                    + "dirorigen, "     
-                    + "cmnaorigen, "    
-                    + "ciudadorigen,"   
-                    + "cdgvendedor, "   
-                    + "rutrecep, "      
-                    + "rznsocrecep, "   
-                    + "girorecep, "     
-                    + "dirrecep, "      
-                    + "cmnarecep,"      
-                    + "ciudadrecep, "   
-                    + "patente, "       
-                    + "ruttrans, "      
-                    + "rutchofer, "     
-                    + "nombrechofer, "  
-                    + "dirdest,"        
-                    + "cmnadest, "      
-                    + "tpomoneda, "     
-                    + "mntneto, "       
-                    + "mntexe, "        
-                    + "mntbase, "       
-                    + "mntmargencom,"   
-                    + "tasaiva, "       
-                    + "iva, "           
-                    + "ivaprop, "       
-                    + "ivaterc, "         
-                    + "mnttotal"        
-                    + ") VALUES ("      /////////////////////////////////////////////////////////////////
-                    + documento.TipoDTE + ","//"tipodte, "
-                    + documento.Folio + ","//"folio, "
-                    + documento.FchEmis + ","//"fchemis, "
-                    + documento.IndNoRebaja + ","//"indnorebaja, "
-                    + documento.TipoDespacho + ","//"tipodespacho, "
-                    + documento.IndTraslado + ","//"indtraslado, "
-                    //+ "mntcancel, "
-                    //+ "saldoinsol, "
-                    //+ "periododesde, "
-                    //+ "periodohasta, "
-                    //+ "mediopago,"
-                    //+ "tipoctapago, "
-                    //+ "numctapago, "
-                    //+ "bcopago, "
-                    //+ "termpagocdg, "
-                    //+ "termpagoglosa, "
-                    //+ "termpagodias, "
-                    //+ "fchvenc, "
-                    + documento.RUTEmisor + "," //"rutemisor, "
-                    + documento.RznSoc + ","    //"rznsoc, "
-                    + documento.GiroEmis + ","  //"giroemis, "
-                    + documento.Telefono + ","  //"telefono, "
-                    + documento.CorreoEmisor + ","//"correoemisor, "
-                    + documento.Acteco + ","    //"acteco, "
-                    + documento.CdgTraslado + ","//"cdgtraslado, "
-                    + documento.FolioAut + ","  //"folioaut, "
-                    + documento.FchAut + ","    //"fchaut, "
-                    + documento.Sucursal + ","  //"sucursal, "
-                    + documento.CdgSIISucur + ","//"cdgsiisucur, "
-                    + documento.CodAdicSucur + ","//"codadicsucur, "
-                    + documento.DirOrigen + ","//"dirorigen, "
-                    + documento.CmnaOrigen + ","//"cmnaorigen, "
-                    + documento.CiudadOrigen + ","//"ciudadorigen,"
-                    + documento.CdgVendedor + ","//"cdgvendedor, "
-                    + documento.RUTRecep + ","//"rutrecep, "
-                    + documento.RznSocRecep + ","//"rznsocrecep, "
-                    + documento.GiroRecep + ","//"girorecep, "
-                    + documento.DirRecep + ","//"dirrecep, "
-                    + documento.CmnaRecep + ","//"cmnarecep,"
-                    + documento.CiudadRecep + ","//"ciudadrecep, "
-                    + documento.Patente + "," //"patente, "
-                    + documento.RUTTrans + ","//"ruttrans, "
-                    + documento.RUTChofer + ","//"rutchofer, "
-                    + documento.NombreChofer + ","//"nombrechofer, "
-                    + documento.DirDest + ","//"dirdest,"
-                    + documento.CmnaDest + ","//"cmnadest, "
-                    + documento.TpoMoneda + ","//"tpomoneda, "
-                    + documento.PrnMtoNeto + ","//"mntneto, "
-                    + documento.MntExe + ","//"mntexe, "
-                    + documento.MntBase + ","//"mntbase, "
-                    + "mntmargencom,"
-                    + documento.TasaIVA + ","//"tasaiva, "
-                    + documento.IVA + ","//"iva, "
-                    + "ivaprop, "
-                    + "ivaterc, "
-                    + documento.MntTotal + ","//"mnttotal"        
-
-                    + ");";
-
+                select.CommandText = "INSERT INTO documento SELECT * FROM json_populate_record(NULL::documento,'"+json+"')";
+                 
                 OdbcDataReader reader = select.ExecuteReader();
 
 
@@ -420,8 +308,7 @@ namespace Modelo
             string jsonString = Encoding.UTF8.GetString(stream.ToArray());
             stream.Close();
 
-            String json = jsonString.Replace("null", "\"\"");
-     
+            String json = jsonString.Replace("null", "\"\"");  
 
             String fileNameJson = @"C:/IatFiles/file/"+documento.TipoDTE+"_"+ documento.RUTEmisor + "_" + documento.Folio + ".json";
 
@@ -495,84 +382,37 @@ namespace Modelo
         [DataMember]
         public string CodImpAdic { get; set; } //Indica el código según tabla de códigos (Ver en Índice 4.- Codificación Tipos de Impuesto).
         [DataMember]
-        public int MontoItem { get; set; } //(Precio Unitario * Cantidad ) – Monto Descuento + Monto Recargo
+        public Int32 MontoItem { get; set; } //(Precio Unitario * Cantidad ) – Monto Descuento + Monto Recargo
         [DataMember]
         public int MontoBruItem { get; set; } 
-        [DataMember]
-        public int FolioDoc { get; set; }
 
-        public void save(Detalle detalledoc)
+
+        public void save(DocumentoModel documento)
         {
-            try
+            foreach (Detalle det in documento.detalle)
             {
-                BaseDato con = new BaseDato();
-                OdbcConnection conexion = con.ConnectPostgres();
+                MemoryStream stream = new MemoryStream();
+                DataContractJsonSerializer detalle = new DataContractJsonSerializer(typeof(Detalle));
+                detalle.WriteObject(stream, det);
+                string jsonString = Encoding.UTF8.GetString(stream.ToArray());
+                stream.Close();
+                String json = jsonString.Replace("null", "\"\"");
+                json = jsonString.Replace("{", "{\"FolioDoc\":" + documento.Folio+",");
 
-                OdbcCommand select = new OdbcCommand();
-                select.Connection = conexion;
-                select.CommandText =
-                    "INSERT INTO detalledoc( "
-                   + "nrolindet, "
-                   + "tpocodigo, "
-                   + "vlrcodigo, "
-                   + "tpodocliq, "
-                   + "indexe, "
-                   + "indagente, "
-                   + "mntbasefaena, "
-                   + "mntmargcomer, "
-                   + "prcconsfinal, "
-                   + "nmbitem, "
-                   + "dscitem, "
-                   + "qtyref, "
-                   + "unmdref, "
-                   + "prcref, "
-                   + "qtyitem, "
-                   + "fchelabor, "
-                   + "fchvencim, "
-                   + "unmditem, "
-                   + "prcitem, "
-                   + "descuentopct, "
-                   + "descuentomonto, "
-                   //+ "recargopct, "
-                   //+ "recargomonto, "
-                   + "montoitem, "
-                   + "foliodoc"
-                   + ") VALUES ("
-                   + detalledoc.NroLinDet + ","//"nrolindet, "
-                   + detalledoc.TpoCodigo + ","//"tpocodigo, "
-                   + detalledoc.VlrCodigo + ","//"vlrcodigo, "
-                   + detalledoc.TpoDocLiq + ","//"tpodocliq, "
-                   + detalledoc.IndExe + ","//"indexe, "
-                   + detalledoc.IndAgente + ","//"indagente, "
-                   + detalledoc.MntBaseFaena + ","//"mntbasefaena, "
-                   + detalledoc.MntMargComer + ","//"mntmargcomer, "
-                   + detalledoc.PrcConsFinal + ",'"//"prcconsfinal, "
-                   + detalledoc.NmbItem + "',"//"nmbitem, "
-                   + detalledoc.DscItem + ","//"dscitem, "
-                   + detalledoc.QtyRef + ","//"qtyref, "
-                   + detalledoc.UnmdRef + ","//"unmdref, "
-                   + detalledoc.PrcRef + ","//"prcref, "
-                   + detalledoc.QtyItem + ","//"qtyitem, "
-                   + detalledoc.FchElabor + ","//"fchelabor, "
-                   + detalledoc.FchVencim + ","//"fchvencim, "
-                   + detalledoc.UnmdItem + ","//"unmditem, "
-                   + detalledoc.PrcItem + ","//"prcitem, "
-                   + detalledoc.DescuentoPct + ","//"descuentopct, "
-                   + detalledoc.DescuentoMonto + ","//"descuentomonto, "
-                   //+ "recargopct, "
-                   //+ "recargomonto, "
-                   + detalledoc.MontoItem + ","//"montoitem, "
-                   + detalledoc.FolioDoc + ","//"foliodoc"
-                   + ");";
-                OdbcDataReader reader = select.ExecuteReader();
-
-
+                try
+                {
+                    BaseDato con = new BaseDato();
+                    OdbcConnection conexion = con.ConnectPostgres();
+                    OdbcCommand select = new OdbcCommand();
+                    select.Connection = conexion;
+                    select.CommandText = "INSERT INTO detalle SELECT * FROM json_populate_record(NULL::detalle,'" + json + "')";
+                    OdbcDataReader reader = select.ExecuteReader();
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Error" + ex.Message);
+                } 
             }
-            catch (Exception ex)
-            {
-                throw new Exception("Error" + ex.Message);
-            }
-
 
         }
       
@@ -648,7 +488,38 @@ namespace Modelo
          public int CodRef { get; set; }
          [DataMember]
          public string RazonRef { get; set; }
+
+         public void save(DocumentoModel documento)
+         {
+             foreach (ReferenciaDoc det in documento.Referencia)
+             {
+                 MemoryStream stream = new MemoryStream();
+                 DataContractJsonSerializer referencia = new DataContractJsonSerializer(typeof(ReferenciaDoc));
+                 referencia.WriteObject(stream, det);
+                 string jsonString = Encoding.UTF8.GetString(stream.ToArray());
+                 stream.Close();
+                 String json = jsonString.Replace("null", "\"\"");
+                 json = jsonString.Replace("{", "{\"FolioDoc\":" + documento.Folio + ",");
+
+                 try
+                 {
+                     BaseDato con = new BaseDato();
+                     OdbcConnection conexion = con.ConnectPostgres();
+                     OdbcCommand select = new OdbcCommand();
+                     select.Connection = conexion;
+                     select.CommandText = "INSERT INTO referencia SELECT * FROM json_populate_record(NULL::referencia,'" + json + "')";
+                     OdbcDataReader reader = select.ExecuteReader();
+                 }
+                 catch (Exception ex)
+                 {
+                     throw new Exception("Error" + ex.Message);
+                 }
+             }
+
+         }
      }
+
+
 
 
      [DataContract]
@@ -668,6 +539,7 @@ namespace Modelo
          public int ValComIVA { get; set; }
 
      }
+
     }
 
 

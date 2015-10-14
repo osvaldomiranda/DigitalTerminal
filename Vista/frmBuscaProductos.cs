@@ -14,6 +14,7 @@ namespace Vista
     {
        private frmPuntoVenta frmPos; 
        ProductosModel producto = new ProductosModel();
+       Detalle detalle = new Detalle();
 
        public frmBuscaProductos()
        {
@@ -126,13 +127,31 @@ namespace Vista
 
         private void buttonAgrega_Click(object sender, EventArgs e)
         {
+            Decimal dctoPrc = 0;
+            int descuentoMontoBruto = 0;
            if(textBoxCantidad.Text !="")
            {
-               Decimal precio = (Decimal)this.dtgwBuscaProductos.CurrentRow.Cells["precioNeto"].Value;
             producto.codigoInt = (String)this.dtgwBuscaProductos.CurrentRow.Cells["codigoInt"].Value;
             producto.nombre = (String)this.dtgwBuscaProductos.CurrentRow.Cells["nombre"].Value;
-            producto.precioNeto = Decimal.Round(precio, 0);
-            frmPos.AddProducto(producto, Convert.ToInt32(textBoxCantidad.Text), labelTotalLinea.Text);
+            producto.precioNeto = Convert.ToDecimal(this.dtgwBuscaProductos.CurrentRow.Cells["PrecioNeto"].Value);
+            producto.precioventa = Convert.ToInt32(this.dtgwBuscaProductos.CurrentRow.Cells["precioVenta"].Value);
+            detalle.QtyItem = Convert.ToInt32(textBoxCantidad.Text);
+
+            if (textBoxDctoPrc.Text == "" || textBoxDctoPrc.Text == "0")
+            {
+                dctoPrc = 1;
+            }
+            else
+            {
+                dctoPrc = Convert.ToDecimal(textBoxDctoPrc.Text) / 100;
+                detalle.DescuentoPct = dctoPrc;
+                detalle.DescuentoMonto = Convert.ToInt32(Convert.ToDecimal(labelLineaNeto.Text) * dctoPrc);
+                descuentoMontoBruto = Convert.ToInt32(Convert.ToInt32(labelTotalLinea.Text) * dctoPrc);
+            }
+            
+            detalle.MontoItem = Convert.ToInt32( Decimal.Round(Convert.ToDecimal(labelLineaNeto.Text)) - detalle.DescuentoMonto);
+            detalle.MontoBruItem = Convert.ToInt32(Convert.ToInt32(labelTotalLinea.Text)) - descuentoMontoBruto; 
+            frmPos.AddProducto(producto, detalle);
             this.Close();
            } 
            else
@@ -148,10 +167,14 @@ namespace Vista
 
         private void textBoxCantidad_TextChanged(object sender, EventArgs e)
         {
+              
                 textBoxCantidad.Select();
-                Decimal precio = (Decimal)this.dtgwBuscaProductos.CurrentRow.Cells["precioNeto"].Value;
+                Decimal precioNeto = (Decimal)this.dtgwBuscaProductos.CurrentRow.Cells["precioNeto"].Value;
+                Decimal precio = (Decimal)this.dtgwBuscaProductos.CurrentRow.Cells["precioVenta"].Value;
                 Int32 cantidad = Convert.ToInt32(textBoxCantidad.Text);
-                labelTotalLinea.Text = "" + cantidad * decimal.Round(precio,0);          
+                labelTotalLinea.Text = "" + (cantidad * decimal.Round(precio, 0));
+                labelLineaNeto.Text = "" + (cantidad * precioNeto);
+                
         }
 
         private void textBoxCantidad_KeyPress(object sender, KeyPressEventArgs e)

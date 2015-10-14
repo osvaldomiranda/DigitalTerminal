@@ -13,7 +13,7 @@ namespace Modelo
                     public OdbcConnection ConnectPostgres()
                     {
 
-                        String stringConn = "Driver={PostgreSQL UNICODE};Server=localhost;Port=5432;Database=digitalterminal;Uid=postgres;Pwd=sopabru2011;";
+                        String stringConn = "Driver={PostgreSQL UNICODE};Server=localhost;Port=5432;Database=digitalterminal;Uid=postgres;Pwd=SOPABRU2011;";
                         OdbcConnection conn = new OdbcConnection(stringConn);
                         try
                         {
