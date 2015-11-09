@@ -42,6 +42,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmCaf.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCaf.Designer.cs">
+      <DependentUpon>frmCaf.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmClientePrecio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmClientePrecio.Designer.cs">
+      <DependentUpon>frmClientePrecio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmClienteProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmClienteProducto.Designer.cs">
+      <DependentUpon>frmClienteProducto.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmComunas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,6 +95,12 @@
     </Compile>
     <Compile Include="frmBuscaCliente.Designer.cs">
       <DependentUpon>frmBuscaCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFolio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFolio.Designer.cs">
+      <DependentUpon>frmFolio.cs</DependentUpon>
     </Compile>
     <Compile Include="frmInicio.cs">
       <SubType>Form</SubType>
@@ -120,6 +144,12 @@
     <Compile Include="frmSelecVenta.Designer.cs">
       <DependentUpon>frmSelecVenta.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmTipoTraslado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTipoTraslado.Designer.cs">
+      <DependentUpon>frmTipoTraslado.cs</DependentUpon>
+    </Compile>
     <Compile Include="MetodosComunes.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -134,6 +164,15 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="frmCaf.resx">
+      <DependentUpon>frmCaf.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmClientePrecio.resx">
+      <DependentUpon>frmClientePrecio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmClienteProducto.resx">
+      <DependentUpon>frmClienteProducto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmComunas.resx">
       <DependentUpon>frmComunas.cs</DependentUpon>
     </EmbeddedResource>
@@ -151,6 +190,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmBuscaCliente.resx">
       <DependentUpon>frmBuscaCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFolio.resx">
+      <DependentUpon>frmFolio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmInicio.resx">
       <DependentUpon>frmInicio.cs</DependentUpon>
@@ -173,6 +215,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmSelecVenta.resx">
       <DependentUpon>frmSelecVenta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTipoTraslado.resx">
+      <DependentUpon>frmTipoTraslado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

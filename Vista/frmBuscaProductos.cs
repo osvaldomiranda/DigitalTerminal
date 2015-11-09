@@ -15,6 +15,9 @@ namespace Vista
        private frmPuntoVenta frmPos; 
        ProductosModel producto = new ProductosModel();
        Detalle detalle = new Detalle();
+       ConfigModel config = new ConfigModel();
+       ClienteProductoModel clienteProdM = new ClienteProductoModel();  
+       
 
        public frmBuscaProductos()
        {
@@ -24,6 +27,7 @@ namespace Vista
         {
             InitializeComponent();
             this.frmPos = frmPOS;
+            config.getConfig();
         }
 
 
@@ -47,16 +51,21 @@ namespace Vista
 
         private void frmBuscaCliente_Load(object sender, EventArgs e)
         {
-            this.txtCodigo.Select();
+                this.txtCodigo.Select();
         }
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
-        
              if (e.KeyChar == (char)13)
             {
-
-                this.dtgwBuscaProductos.DataSource = new ProductosModel().getProdXCod(this.txtCodigo.Text);
+                if (config.clienteProducto == "True")
+                {
+                    this.dtgwBuscaProductos.DataSource = new ClienteProductoModel().getProdClientXCod(frmPos.textBoxRutRecep.Text, this.txtCodigo.Text);
+                }
+                else
+                {
+                    this.dtgwBuscaProductos.DataSource = new ProductosModel().getProdXCod(this.txtCodigo.Text);
+                }
                 if (dtgwBuscaProductos.RowCount != 0)
                 {
                     this.dtgwBuscaProductos.Select();
@@ -86,10 +95,29 @@ namespace Vista
         {
             if (e.KeyChar == (char)13)
             {
+                if (config.clienteProducto == "True")
+                {
 
-                this.dtgwBuscaProductos.DataSource = new ProductosModel().getProdXNombre(this.txtNombre.Text.ToUpper());
-                this.dtgwBuscaProductos.Select();
+                    this.dtgwBuscaProductos.DataSource = new ClienteProductoModel().getProdClientXNom(frmPos.textBoxRutRecep.Text,this.txtNombre.Text.ToUpper());
+                    this.dtgwBuscaProductos.Select();
+                }
+                else
+                {
 
+                    this.dtgwBuscaProductos.DataSource = new ProductosModel().getProdXNombre(this.txtNombre.Text.ToUpper());
+                    this.dtgwBuscaProductos.Select();
+                }
+
+                if (dtgwBuscaProductos.RowCount != 0)
+                {
+                    this.dtgwBuscaProductos.Select();
+                }
+                else
+                {
+                    MessageBox.Show("No se encuentra el producto");
+                    this.txtNombre.Select();
+                    this.txtNombre.SelectAll();
+                }
             }
 
         }
@@ -135,6 +163,7 @@ namespace Vista
             producto.nombre = (String)this.dtgwBuscaProductos.CurrentRow.Cells["nombre"].Value;
             producto.precioNeto = Convert.ToDecimal(this.dtgwBuscaProductos.CurrentRow.Cells["PrecioNeto"].Value);
             producto.precioventa = Convert.ToInt32(this.dtgwBuscaProductos.CurrentRow.Cells["precioVenta"].Value);
+            producto.exento = (String)this.dtgwBuscaProductos.CurrentRow.Cells["exento"].Value;
             detalle.QtyItem = Convert.ToInt32(textBoxCantidad.Text);
 
             if (textBoxDctoPrc.Text == "" || textBoxDctoPrc.Text == "0")
@@ -167,13 +196,24 @@ namespace Vista
 
         private void textBoxCantidad_TextChanged(object sender, EventArgs e)
         {
-              
+            if (System.Text.RegularExpressions.Regex.IsMatch(textBoxCantidad.Text, "[^0-9]"))
+            {
+                MessageBox.Show("solo se permiten numeros en la cantidad");
+                textBoxCantidad.Text = ""; 
                 textBoxCantidad.Select();
-                Decimal precioNeto = (Decimal)this.dtgwBuscaProductos.CurrentRow.Cells["precioNeto"].Value;
-                Decimal precio = (Decimal)this.dtgwBuscaProductos.CurrentRow.Cells["precioVenta"].Value;
-                Int32 cantidad = Convert.ToInt32(textBoxCantidad.Text);
-                labelTotalLinea.Text = "" + (cantidad * decimal.Round(precio, 0));
-                labelLineaNeto.Text = "" + (cantidad * precioNeto);
+            }
+            else
+            {
+                if (textBoxCantidad.Text != "" && dtgwBuscaProductos.Rows.Count != 0 )
+                {
+                    textBoxCantidad.Select();
+                    Decimal precioNeto = (Decimal)this.dtgwBuscaProductos.CurrentRow.Cells["precioNeto"].Value;
+                    Decimal precio = (Decimal)this.dtgwBuscaProductos.CurrentRow.Cells["precioVenta"].Value;
+                    Int32 cantidad = Convert.ToInt32(textBoxCantidad.Text);
+                    labelTotalLinea.Text = "" + (cantidad * decimal.Round(precio, 0));
+                    labelLineaNeto.Text = "" + (cantidad * precioNeto);
+                }
+            }
                 
         }
 
@@ -192,6 +232,14 @@ namespace Vista
             this.txtCodigo.Text = (String)this.dtgwBuscaProductos.CurrentRow.Cells["codigoInt"].Value;
             this.txtNombre.Text = (String)this.dtgwBuscaProductos.CurrentRow.Cells["nombre"].Value;
 
+        }
+
+        private void textBoxCantidad_Validated(object sender, EventArgs e)
+        {
+            if (System.Text.RegularExpressions.Regex.IsMatch(textBoxCantidad.Text, "[^0-9]"))
+            {
+                MessageBox.Show("LA CANTIDAD SOLO CON NUMEROS ENTEROS");
+            }
         }
 
 

@@ -29,6 +29,37 @@ namespace Modelo
             this.giro = giro;
         }
 
+        public OdbcDataReader getClienteReader(String rut)
+        {
+            SqlConnection sqlcon = new SqlConnection();
+            OdbcDataReader reader;
+            try
+            {
+                BaseDato con = new BaseDato();
+                OdbcConnection conexion = con.ConnectPostgres();
+
+                OdbcCommand select = new OdbcCommand();
+                select.Connection = conexion;
+                select.CommandText = "SELECT * FROM cliente "
+                                    + "INNER JOIN ciudades ON \"codCiudadRecep\" =\"codCiudad\" "
+                                    + "INNER JOIN comunas ON \"codCmnaRecep\" = \"codComuna\" "
+                                    + "where \"rutRecep\" = '" + rut + "'";
+                 reader = select.ExecuteReader();
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error" + ex.Message);
+            }
+
+            finally
+            {
+                sqlcon.Close();
+            }
+
+            return reader;
+        }
+
 
         public DataTable getContribuyente(String rut)
         {
@@ -67,6 +98,7 @@ namespace Modelo
 
         public void save(ContribuyenteModel cm)
         {
+           
             SqlConnection sqlcon = new SqlConnection();
             try
             {
@@ -74,6 +106,7 @@ namespace Modelo
             OdbcConnection conexion = con.ConnectPostgres();
 
             OdbcCommand select = new OdbcCommand();
+
             select.Connection = conexion;
             select.CommandText = "INSERT INTO cliente("
                                 +"\"rutRecep\","
@@ -91,13 +124,16 @@ namespace Modelo
                                 + cm.codComuna + ","
                                 + cm.codCiudad + ",'"
                                 + cm.telefono+"');";
-            OdbcDataReader reader = select.ExecuteReader();
+
+             OdbcDataReader reader = select.ExecuteReader();
 
             }
+            
             catch (Exception ex)
             {
-                throw new Exception("Error" + ex.Message);
+                Console.WriteLine("Error" + ex.Message);
             }
+            
             finally
                         {
                             sqlcon.Close();

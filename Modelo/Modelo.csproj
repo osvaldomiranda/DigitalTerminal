@@ -33,6 +33,9 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite">
+      <HintPath>..\..\AdmToSap\bin\Debug\System.Data.SQLite.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -42,7 +45,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseDato.cs" />
+    <Compile Include="CafModel.cs" />
     <Compile Include="ClienteProductoModel.cs" />
+    <Compile Include="configModel.cs" />
     <Compile Include="ContribuyenteModel.cs" />
     <Compile Include="CiudadesModel.cs" />
     <Compile Include="ComunasModel.cs" />
@@ -53,6 +58,7 @@
     <Compile Include="ProductosModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TipoDteModel.cs" />
+    <Compile Include="UsuarioModel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

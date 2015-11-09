@@ -34,22 +34,22 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.lblProductos = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.txtCodigo = new System.Windows.Forms.TextBox();
+            this.textBoxDctoPrc = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.buttonBuscar = new System.Windows.Forms.Button();
             this.textBoxCantidad = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.labelLineaNeto = new System.Windows.Forms.Label();
             this.labelTotalLinea = new System.Windows.Forms.Label();
+            this.labelDctMonto = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtCodigo = new System.Windows.Forms.TextBox();
             this.dtgwBuscaProductos = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.btnSalir = new System.Windows.Forms.Button();
             this.buttonAgrega = new System.Windows.Forms.Button();
-            this.labelLineaNeto = new System.Windows.Forms.Label();
-            this.labelDctMonto = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBoxDctoPrc = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgwBuscaProductos)).BeginInit();
@@ -95,7 +95,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.3125F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 79.6875F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 108F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 156F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 157F));
             this.tableLayoutPanel2.Controls.Add(this.textBoxDctoPrc, 3, 0);
             this.tableLayoutPanel2.Controls.Add(this.txtNombre, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.label1, 0, 0);
@@ -119,16 +119,15 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(649, 89);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
-            // txtCodigo
+            // textBoxDctoPrc
             // 
-            this.txtCodigo.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtCodigo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodigo.Location = new System.Drawing.Point(81, 3);
-            this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.Size = new System.Drawing.Size(139, 21);
-            this.txtCodigo.TabIndex = 0;
-            this.txtCodigo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
+            this.textBoxDctoPrc.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.textBoxDctoPrc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxDctoPrc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxDctoPrc.Location = new System.Drawing.Point(495, 3);
+            this.textBoxDctoPrc.Name = "textBoxDctoPrc";
+            this.textBoxDctoPrc.Size = new System.Drawing.Size(53, 21);
+            this.textBoxDctoPrc.TabIndex = 11;
             // 
             // txtNombre
             // 
@@ -191,6 +190,7 @@
             this.textBoxCantidad.TabIndex = 5;
             this.textBoxCantidad.TextChanged += new System.EventHandler(this.textBoxCantidad_TextChanged);
             this.textBoxCantidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxCantidad_KeyPress);
+            this.textBoxCantidad.Validated += new System.EventHandler(this.textBoxCantidad_Validated);
             // 
             // label3
             // 
@@ -203,6 +203,16 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "Cantidad:";
             // 
+            // labelLineaNeto
+            // 
+            this.labelLineaNeto.AutoSize = true;
+            this.labelLineaNeto.Location = new System.Drawing.Point(495, 56);
+            this.labelLineaNeto.Name = "labelLineaNeto";
+            this.labelLineaNeto.Size = new System.Drawing.Size(76, 13);
+            this.labelLineaNeto.TabIndex = 8;
+            this.labelLineaNeto.Text = "totalLineaNeto";
+            this.labelLineaNeto.Visible = false;
+            // 
             // labelTotalLinea
             // 
             this.labelTotalLinea.AutoSize = true;
@@ -212,6 +222,38 @@
             this.labelTotalLinea.TabIndex = 7;
             this.labelTotalLinea.Text = "totalLinea";
             this.labelTotalLinea.Visible = false;
+            // 
+            // labelDctMonto
+            // 
+            this.labelDctMonto.AutoSize = true;
+            this.labelDctMonto.Location = new System.Drawing.Point(495, 27);
+            this.labelDctMonto.Name = "labelDctMonto";
+            this.labelDctMonto.Size = new System.Drawing.Size(89, 13);
+            this.labelDctMonto.TabIndex = 9;
+            this.labelDctMonto.Text = "DescuentoMonto";
+            this.labelDctMonto.Visible = false;
+            // 
+            // label4
+            // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(387, 7);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(89, 13);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Descuento % :";
+            // 
+            // txtCodigo
+            // 
+            this.txtCodigo.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txtCodigo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCodigo.Location = new System.Drawing.Point(81, 3);
+            this.txtCodigo.Name = "txtCodigo";
+            this.txtCodigo.Size = new System.Drawing.Size(139, 21);
+            this.txtCodigo.TabIndex = 0;
+            this.txtCodigo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
             // dtgwBuscaProductos
             // 
@@ -238,11 +280,9 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dtgwBuscaProductos.DefaultCellStyle = dataGridViewCellStyle2;
             this.dtgwBuscaProductos.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dtgwBuscaProductos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dtgwBuscaProductos.GridColor = System.Drawing.SystemColors.ControlLight;
             this.dtgwBuscaProductos.Location = new System.Drawing.Point(4, 123);
             this.dtgwBuscaProductos.Name = "dtgwBuscaProductos";
-            this.dtgwBuscaProductos.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -306,47 +346,6 @@
             this.buttonAgrega.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.buttonAgrega.UseVisualStyleBackColor = true;
             this.buttonAgrega.Click += new System.EventHandler(this.buttonAgrega_Click);
-            // 
-            // labelLineaNeto
-            // 
-            this.labelLineaNeto.AutoSize = true;
-            this.labelLineaNeto.Location = new System.Drawing.Point(495, 56);
-            this.labelLineaNeto.Name = "labelLineaNeto";
-            this.labelLineaNeto.Size = new System.Drawing.Size(76, 13);
-            this.labelLineaNeto.TabIndex = 8;
-            this.labelLineaNeto.Text = "totalLineaNeto";
-            this.labelLineaNeto.Visible = false;
-            // 
-            // labelDctMonto
-            // 
-            this.labelDctMonto.AutoSize = true;
-            this.labelDctMonto.Location = new System.Drawing.Point(495, 27);
-            this.labelDctMonto.Name = "labelDctMonto";
-            this.labelDctMonto.Size = new System.Drawing.Size(89, 13);
-            this.labelDctMonto.TabIndex = 9;
-            this.labelDctMonto.Text = "DescuentoMonto";
-            this.labelDctMonto.Visible = false;
-            // 
-            // label4
-            // 
-            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(387, 7);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(89, 13);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "Descuento % :";
-            // 
-            // textBoxDctoPrc
-            // 
-            this.textBoxDctoPrc.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textBoxDctoPrc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBoxDctoPrc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxDctoPrc.Location = new System.Drawing.Point(495, 3);
-            this.textBoxDctoPrc.Name = "textBoxDctoPrc";
-            this.textBoxDctoPrc.Size = new System.Drawing.Size(53, 21);
-            this.textBoxDctoPrc.TabIndex = 11;
             // 
             // frmBuscaProductos
             // 

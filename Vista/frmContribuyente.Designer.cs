@@ -39,16 +39,17 @@
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
+            this.buttonProdCli = new System.Windows.Forms.Button();
             this.lblNomCliente = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBoxGiro = new System.Windows.Forms.TextBox();
-            this.textBoxRazonSocial = new System.Windows.Forms.TextBox();
             this.textBoxRutCliente = new System.Windows.Forms.TextBox();
             this.labelTelefono = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.textBoxTelefono = new System.Windows.Forms.TextBox();
+            this.textBoxRazonSocial = new System.Windows.Forms.TextBox();
+            this.textBoxGiro = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label6 = new System.Windows.Forms.Label();
             this.textBoxDireccion = new System.Windows.Forms.TextBox();
@@ -186,11 +187,12 @@
             // 
             this.tableLayoutPanel4.ColumnCount = 4;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 344F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 233F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 93F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 484F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 247F));
             this.tableLayoutPanel4.Controls.Add(this.btnSalir, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.btnSave, 1, 0);
+            this.tableLayoutPanel4.Controls.Add(this.buttonProdCli, 2, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(5, 290);
             this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(4);
@@ -238,6 +240,24 @@
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
+            // buttonProdCli
+            // 
+            this.buttonProdCli.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.buttonProdCli.FlatAppearance.BorderColor = System.Drawing.Color.Green;
+            this.buttonProdCli.FlatAppearance.BorderSize = 2;
+            this.buttonProdCli.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonProdCli.Font = new System.Drawing.Font("Papyrus", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonProdCli.ForeColor = System.Drawing.Color.ForestGreen;
+            this.buttonProdCli.Image = global::Vista.Properties.Resources.product_48;
+            this.buttonProdCli.Location = new System.Drawing.Point(194, 6);
+            this.buttonProdCli.Margin = new System.Windows.Forms.Padding(6);
+            this.buttonProdCli.Name = "buttonProdCli";
+            this.buttonProdCli.Size = new System.Drawing.Size(80, 63);
+            this.buttonProdCli.TabIndex = 19;
+            this.buttonProdCli.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.buttonProdCli.UseVisualStyleBackColor = false;
+            this.buttonProdCli.Click += new System.EventHandler(this.buttonProdCli_Click);
+            // 
             // lblNomCliente
             // 
             this.lblNomCliente.AutoSize = true;
@@ -248,24 +268,25 @@
             this.lblNomCliente.Name = "lblNomCliente";
             this.lblNomCliente.Size = new System.Drawing.Size(919, 18);
             this.lblNomCliente.TabIndex = 0;
-            this.lblNomCliente.Text = "AGREGA CLIENTES";
+            this.lblNomCliente.Text = "CLIENTES";
             this.lblNomCliente.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // tableLayoutPanel2
             // 
-            this.tableLayoutPanel2.ColumnCount = 4;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 88F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 205F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 115F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 511F));
+            this.tableLayoutPanel2.ColumnCount = 5;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel2.Controls.Add(this.label3, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.textBoxGiro, 3, 1);
-            this.tableLayoutPanel2.Controls.Add(this.textBoxRazonSocial, 3, 0);
             this.tableLayoutPanel2.Controls.Add(this.textBoxRutCliente, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.labelTelefono, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.label1, 2, 0);
-            this.tableLayoutPanel2.Controls.Add(this.label2, 2, 1);
             this.tableLayoutPanel2.Controls.Add(this.textBoxTelefono, 1, 1);
+            this.tableLayoutPanel2.Controls.Add(this.textBoxRazonSocial, 4, 0);
+            this.tableLayoutPanel2.Controls.Add(this.textBoxGiro, 4, 1);
+            this.tableLayoutPanel2.Controls.Add(this.label2, 3, 1);
+            this.tableLayoutPanel2.Controls.Add(this.label1, 3, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(5, 28);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4);
@@ -275,6 +296,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(919, 101);
             this.tableLayoutPanel2.TabIndex = 0;
+            this.tableLayoutPanel2.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel2_Paint);
             // 
             // label3
             // 
@@ -288,35 +310,16 @@
             this.label3.TabIndex = 21;
             this.label3.Text = "TELEFONO";
             // 
-            // textBoxGiro
-            // 
-            this.textBoxGiro.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textBoxGiro.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBoxGiro.Location = new System.Drawing.Point(412, 64);
-            this.textBoxGiro.Margin = new System.Windows.Forms.Padding(4);
-            this.textBoxGiro.Name = "textBoxGiro";
-            this.textBoxGiro.Size = new System.Drawing.Size(437, 22);
-            this.textBoxGiro.TabIndex = 3;
-            // 
-            // textBoxRazonSocial
-            // 
-            this.textBoxRazonSocial.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textBoxRazonSocial.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBoxRazonSocial.Location = new System.Drawing.Point(412, 14);
-            this.textBoxRazonSocial.Margin = new System.Windows.Forms.Padding(4);
-            this.textBoxRazonSocial.Name = "textBoxRazonSocial";
-            this.textBoxRazonSocial.Size = new System.Drawing.Size(437, 22);
-            this.textBoxRazonSocial.TabIndex = 1;
-            // 
             // textBoxRutCliente
             // 
             this.textBoxRutCliente.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.textBoxRutCliente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBoxRutCliente.Location = new System.Drawing.Point(92, 14);
+            this.textBoxRutCliente.Location = new System.Drawing.Point(89, 14);
             this.textBoxRutCliente.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxRutCliente.Name = "textBoxRutCliente";
             this.textBoxRutCliente.Size = new System.Drawing.Size(197, 22);
             this.textBoxRutCliente.TabIndex = 0;
+            this.textBoxRutCliente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxRutCliente_KeyPress);
             this.textBoxRutCliente.Validated += new System.EventHandler(this.textBoxRutCliente_Validated);
             // 
             // labelTelefono
@@ -331,39 +334,60 @@
             this.labelTelefono.TabIndex = 18;
             this.labelTelefono.Text = "RUT:";
             // 
-            // label1
+            // textBoxTelefono
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(296, 17);
-            this.label1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(105, 15);
-            this.label1.TabIndex = 19;
-            this.label1.Text = "RAZON SOCIAL";
+            this.textBoxTelefono.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.textBoxTelefono.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxTelefono.Location = new System.Drawing.Point(89, 64);
+            this.textBoxTelefono.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxTelefono.Name = "textBoxTelefono";
+            this.textBoxTelefono.Size = new System.Drawing.Size(197, 22);
+            this.textBoxTelefono.TabIndex = 2;
+            // 
+            // textBoxRazonSocial
+            // 
+            this.textBoxRazonSocial.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.textBoxRazonSocial.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxRazonSocial.Location = new System.Drawing.Point(405, 14);
+            this.textBoxRazonSocial.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxRazonSocial.Name = "textBoxRazonSocial";
+            this.textBoxRazonSocial.Size = new System.Drawing.Size(382, 22);
+            this.textBoxRazonSocial.TabIndex = 1;
+            // 
+            // textBoxGiro
+            // 
+            this.textBoxGiro.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.textBoxGiro.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxGiro.Location = new System.Drawing.Point(405, 64);
+            this.textBoxGiro.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxGiro.Name = "textBoxGiro";
+            this.textBoxGiro.Size = new System.Drawing.Size(382, 22);
+            this.textBoxGiro.TabIndex = 3;
             // 
             // label2
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(296, 68);
+            this.label2.Location = new System.Drawing.Point(293, 68);
             this.label2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 15);
             this.label2.TabIndex = 20;
             this.label2.Text = "GIRO";
             // 
-            // textBoxTelefono
+            // label1
             // 
-            this.textBoxTelefono.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textBoxTelefono.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBoxTelefono.Location = new System.Drawing.Point(92, 64);
-            this.textBoxTelefono.Margin = new System.Windows.Forms.Padding(4);
-            this.textBoxTelefono.Name = "textBoxTelefono";
-            this.textBoxTelefono.Size = new System.Drawing.Size(197, 22);
-            this.textBoxTelefono.TabIndex = 2;
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(293, 17);
+            this.label1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(105, 15);
+            this.label1.TabIndex = 19;
+            this.label1.Text = "RAZON SOCIAL";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // tableLayoutPanel3
             // 
@@ -447,6 +471,7 @@
             this.labelCodCiudad.Size = new System.Drawing.Size(74, 16);
             this.labelCodCiudad.TabIndex = 25;
             this.labelCodCiudad.Text = "codCiudad";
+            this.labelCodCiudad.Visible = false;
             // 
             // labelCodComuna
             // 
@@ -456,6 +481,7 @@
             this.labelCodComuna.Size = new System.Drawing.Size(81, 16);
             this.labelCodComuna.TabIndex = 26;
             this.labelCodComuna.Text = "codComuna";
+            this.labelCodComuna.Visible = false;
             // 
             // tableLayoutPanel6
             // 
@@ -585,8 +611,8 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.TextBox textBoxTelefono;
         private System.Windows.Forms.TextBox textBoxGiro;
-        private System.Windows.Forms.TextBox textBoxRutCliente;
-        private System.Windows.Forms.TextBox textBoxRazonSocial;
+        public System.Windows.Forms.TextBox textBoxRutCliente;
+        public System.Windows.Forms.TextBox textBoxRazonSocial;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
@@ -614,6 +640,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button buttonProdCli;
 
     }
 }

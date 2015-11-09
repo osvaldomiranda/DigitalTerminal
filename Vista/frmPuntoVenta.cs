@@ -20,14 +20,19 @@ namespace Vista
         Detalle detalle = new Detalle();
         ReferenciaDoc referencia = new ReferenciaDoc();
         folioModel folio = new folioModel();
+        DscRcgGlobal descuentoGlobal = new DscRcgGlobal();
+        List<DscRcgGlobal> descuentosGlobales = new List<DscRcgGlobal>();
         
         public frmPuntoVenta()
         {
             InitializeComponent();
             
         }
-
-
+        public frmPuntoVenta(DocumentoModel doc)
+        {
+            InitializeComponent();
+            this.documento = doc;
+        }
         private void btnBuscaCliente_Click(object sender, EventArgs e)
         {
             new frmBuscaCliente(this).ShowDialog();
@@ -40,8 +45,7 @@ namespace Vista
 
         private void btnBuscaProducto_Click(object sender, EventArgs e)
         {
-            new frmBuscaProductos(this).ShowDialog();
-           
+            new frmBuscaProductos(this).ShowDialog();         
         }
 
         public DataGridView getDGVDetalle()
@@ -70,15 +74,13 @@ namespace Vista
 
         private void btnGeneraDoc_Click(object sender, EventArgs e)
         {
-            new frmSelecVenta().ShowDialog();
+           
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
-
         
         private void button4_Click(object sender, EventArgs e)
         {
@@ -116,6 +118,7 @@ namespace Vista
          {
              if (textBoxRutRecep.Text != "")
              {
+                 textBoxRutRecep.Text = new MetodosComunes().formatearRut(textBoxRutRecep.Text);
                  dataTableCliente = cliente.getContribuyente(textBoxRutRecep.Text);
                  if (dataTableCliente.Rows.Count != 0)
                  {
@@ -163,11 +166,13 @@ namespace Vista
      }
 
 
+
+
      public void AddProducto(ProductosModel producto, Detalle detalle)
      {
          n = this.dtgwDetalle.Rows.Add();
-         this.dtgwDetalle.Rows[n].Cells[0].Value = "-";
-         this.dtgwDetalle.Rows[n].Cells[1].Value =  n + 1;
+         this.dtgwDetalle.Rows[n].Cells["elimina"].Value = "-";
+         this.dtgwDetalle.Rows[n].Cells["item"].Value = n + 1;
          this.dtgwDetalle.Rows[n].Cells[2].Value =  producto.codigoInt.ToString(); 
          this.dtgwDetalle.Rows[n].Cells[3].Value =  producto.nombre.ToString();
          this.dtgwDetalle.Rows[n].Cells[4].Value =  producto.precioNeto.ToString();
@@ -177,8 +182,24 @@ namespace Vista
          this.dtgwDetalle.Rows[n].Cells[8].Value = detalle.DescuentoMonto.ToString("N0", CultureInfo.CreateSpecificCulture("es-ES"));
          this.dtgwDetalle.Rows[n].Cells[9].Value =  detalle.MontoItem.ToString("N0", CultureInfo.CreateSpecificCulture("es-ES"));
          this.dtgwDetalle.Rows[n].Cells[10].Value = detalle.MontoBruItem.ToString("N0", CultureInfo.CreateSpecificCulture("es-ES"));
-         actualizaTotal();
+         this.dtgwDetalle.Rows[n].Cells[11].Value = producto.exento.ToString(); 
+
+         if (producto.exento == "False")
+         {
+             actualizaTotal();
+             actualizaDescuentos();
+         }
+         else
+         {
+             this.dtgwDetalle.Rows[n].Cells[4].Value = 0;
+             this.dtgwDetalle.Rows[n].Cells[9].Value = 0;
+             actualizaExento();
+         }
+
+
      }
+
+
 
      private void dtgwDetalle_Validated(object sender, EventArgs e)
      {
@@ -190,31 +211,45 @@ namespace Vista
          Decimal suma = 0;
          for (int i = 0; i < dtgwDetalle.RowCount; i++)
          {
-             suma += Convert.ToDecimal(this.dtgwDetalle.Rows[i].Cells[10].Value.ToString().Replace(".",""));
+                 suma += Convert.ToDecimal(this.dtgwDetalle.Rows[i].Cells[9].Value.ToString().Replace(".", ""));            
          }
-         labelMtoTotal.Text = suma.ToString("N0", CultureInfo.CreateSpecificCulture("es-ES"));
+         labelSubTotal.Text = suma.ToString("N0", CultureInfo.CreateSpecificCulture("es-ES"));
          calculaIva();
      }
 
+
+     private void actualizaExento()
+     {
+
+         Decimal suma = 0;
+         for (int i = 0; i < dtgwDetalle.RowCount; i++)
+         {
+             if (this.dtgwDetalle.Rows[i].Cells[4].Value.ToString() == "0")
+             {
+                 suma += Convert.ToDecimal(this.dtgwDetalle.Rows[i].Cells[10].Value.ToString().Replace(".", ""));
+             }
+         }
+         labelMtoExento.Text = suma.ToString("N0", CultureInfo.CreateSpecificCulture("es-ES"));
+         actualizaDescuentos();
+        
+     }
         private void calculaIva()
         {
-            string total = labelMtoTotal.Text.Replace(".", "");
-            labelSubTotal.Text = (Convert.ToDecimal(total) / Convert.ToDecimal(1.19)).ToString("N0", CultureInfo.CreateSpecificCulture("es-ES"));
-            labelIva.Text = (Convert.ToInt32(total) - Convert.ToInt32(labelSubTotal.Text.Replace(".", ""))).ToString("N0", CultureInfo.CreateSpecificCulture("es-ES")); 
+            string subtotal = labelSubTotal.Text.Replace(".", "");
+            Int32 exento = Convert.ToInt32(labelMtoExento.Text.Replace(".",""));
+            labelIva.Text = (Convert.ToDecimal(subtotal) * Convert.ToDecimal(1.19)).ToString("N0", CultureInfo.CreateSpecificCulture("es-ES"));
+            labelMtoTotal.Text = (Convert.ToInt32(subtotal) + exento + Convert.ToInt32(labelSubTotal.Text.Replace(".", ""))).ToString("N0", CultureInfo.CreateSpecificCulture("es-ES")); 
         }
 
         private void buttonGuardar_Click(object sender, EventArgs e)
         {
             try
             {
-                documento.serialize(cargaDocumento());
-                documento.save(documento);
+                documento.serialize(cargaDocumento(802,0));
+                documento.save(documento); //TEST
                 detalle.save(documento);
                 referencia.save(documento);
-                folio.modificaEstado("JSON CREADO", documento.Folio);
-                MessageBox.Show("El Documento se guardo");
-               
-
+                MessageBox.Show("El Pedido se guardo con Folio: " + documento.Folio);
             }
             catch(Exception err)
             {
@@ -223,7 +258,32 @@ namespace Vista
         }
 
 
-        private DocumentoModel cargaDocumento()
+        public void creaDte(int tipo, int codCaf)
+        {
+            try
+            {
+                if (tipo == 52)
+                {
+                    new frmTipoTraslado(documento).ShowDialog();
+                    documento.TasaIVA = 0;
+                }
+                documento.serialize(cargaDocumento(tipo, codCaf));
+                documento.save(documento); //TEST
+                detalle.save(documento);
+                referencia.save(documento);
+                folio.modificaEstado("JSON CREADO", documento.Folio, codCaf);
+                MessageBox.Show("El Documento Con folio: "+ documento.Folio+" se guardo");
+
+
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show("" + err);
+            }
+        }
+
+
+        private DocumentoModel cargaDocumento(int tipo, int codCAf)
         {
 
             try
@@ -231,8 +291,15 @@ namespace Vista
                 EmpresaModel empresa = new EmpresaModel();
                 empresa.getEmpresa();
 
-                documento.TipoDTE = 33; // cod pedido TODO
-                documento.Folio = folio.getUltimoFolio();
+                documento.TipoDTE = tipo; // cod pedido TODO
+                if (tipo == 802)
+                {
+                    documento.Folio = folio.getUltimoFolioPedido();
+                }
+                else
+                {
+                    documento.Folio = folio.getUltimoFolio(codCAf);
+                }
                 // Cargo Datos Emisor
                 documento.RUTEmisor = empresa.Rut;
                 documento.RznSoc = empresa.RazonSocial;
@@ -269,20 +336,37 @@ namespace Vista
                     detalle.DescuentoMonto = Convert.ToInt32(this.dtgwDetalle.Rows[i].Cells[8].Value.ToString().Replace(".", ""));
                     detalle.MontoItem = Convert.ToInt32(this.dtgwDetalle.Rows[i].Cells[9].Value.ToString().Replace(".",""));
                     detalle.MontoBruItem = Convert.ToInt32(this.dtgwDetalle.Rows[i].Cells[10].Value.ToString().Replace(".", ""));
+                    if (this.dtgwDetalle.Rows[n].Cells[11].Value.ToString() == "True")
+                    {
+                        detalle.IndExe = "1";
+                        detalle.MontoItem = Convert.ToInt32(this.dtgwDetalle.Rows[i].Cells[10].Value.ToString().Replace(".", ""));
+                        detalle.PrcItem = Convert.ToDecimal(this.dtgwDetalle.Rows[i].Cells[5].Value.ToString().Replace(".", ""));
+                    }
                     detalles.Add(detalle);
                 }
                 //Cargo los descuentos globales
-                List<DscRcgGlobal> descuentosGlobales = new List<DscRcgGlobal>();
-                DscRcgGlobal descuentoGlobal = new DscRcgGlobal();
-                descuentoGlobal.NroLinDR = 0;
-                descuentoGlobal.TpoMov = "";
-                descuentoGlobal.GlosaDR = "";
-                descuentoGlobal.TpoValor = "";
-                descuentoGlobal.ValorDR = 0;
-                descuentoGlobal.IndExeDR = Convert.ToInt32(labelDctoGlobal.Text);
+                if (textBoxDctoGlobal.Text != "0")//|| textBoxDctoGlobal.Text != "")
+                {
+                    descuentoGlobal.NroLinDR = 1;
+                    descuentoGlobal.TpoMov = "D";
+                    descuentoGlobal.GlosaDR = "";
+                    descuentoGlobal.TpoValor = "%";
+                    descuentoGlobal.ValorDR = Convert.ToDecimal(textBoxDctoGlobal.Text);
+                    descuentoGlobal.IndExeDR = 0;
+                }
+                else
+                {
+                    descuentoGlobal.NroLinDR = 0;
+                    descuentoGlobal.TpoMov = "";
+                    descuentoGlobal.GlosaDR = "";
+                    descuentoGlobal.TpoValor = "";
+                    descuentoGlobal.ValorDR = 0;
+                    descuentoGlobal.IndExeDR = 0;
+                }
                 descuentosGlobales.Add(descuentoGlobal);
                 documento.detalle = detalles;
                 documento.TasaIVA = 19;
+                documento.MntExe = Convert.ToInt32(labelMtoExento.Text.ToString().Replace(".", ""));
                 documento.dscRcgGlobal = descuentosGlobales;
                 documento.MntNeto = Convert.ToInt32(labelSubTotal.Text.ToString().Replace(".", ""));
                 documento.IVA = Convert.ToInt32(labelIva.Text.ToString().Replace(".", ""));
@@ -305,7 +389,53 @@ namespace Vista
 
         }
 
+        private void textBoxDctoGlobal_Validated(object sender, EventArgs e)
+        {
+            actualizaDescuentos();
 
+        }
+
+        private void actualizaDescuentos()
+        {
+            actualizaTotal();
+            Decimal valorNeto = Convert.ToDecimal(labelSubTotal.Text.Replace(".", ""));
+            Decimal valorIva = Convert.ToInt32(labelIva.Text.Replace(".", ""));
+            Decimal valorTotal = Convert.ToInt32(labelMtoTotal.Text.Replace(".", ""));
+            Decimal valorDescuento = valorNeto * (Convert.ToDecimal(textBoxDctoGlobal.Text.Replace(".", "")) / 100);
+            Decimal exento = Convert.ToDecimal(labelMtoExento.Text.Replace(".", ""));
+            valorNeto = Decimal.Round(valorNeto - valorDescuento);
+            valorIva = Decimal.Round(valorNeto * Convert.ToDecimal(0.19));
+            valorTotal = valorNeto + valorIva + exento;
+            labelSubTotal.Text = valorNeto.ToString("N0", CultureInfo.CreateSpecificCulture("es-ES"));
+            labelIva.Text = valorIva.ToString("N0", CultureInfo.CreateSpecificCulture("es-ES"));
+            labelMtoTotal.Text = valorTotal.ToString("N0", CultureInfo.CreateSpecificCulture("es-ES"));
+        }
+
+        private void actlizaRowItem()
+        {
+            for (int i = 0; i < dtgwDetalle.RowCount; i++)
+            {
+                this.dtgwDetalle.Rows[i].Cells[1].Value = i+1;
+
+            }
+
+        }
+
+        private void dtgwDetalle_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == dtgwDetalle.Columns["elimina"].Index && e.RowIndex >= 0)
+            {
+                dtgwDetalle.Rows.RemoveAt(e.RowIndex);
+                actlizaRowItem();
+                actualizaDescuentos();
+            }
+        }
+
+        private void buttonEmiteDte_Click(object sender, EventArgs e)
+        {
+            new frmSelecVenta(this).ShowDialog();
+        }
+     
 
     }
 }

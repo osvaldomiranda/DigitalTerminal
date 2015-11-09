@@ -27,6 +27,7 @@ namespace Vista
                 producto.codigoInt = textBoxCodInt.Text;
                 producto.precioNeto = Convert.ToDecimal(textBoxPrecioNeto.Text);
                 producto.precioventa = Convert.ToInt32(textBoxPrecioBruto.Text);
+                producto.exento = checkBoxExento.Checked.ToString() ;
                 producto.save(producto);
                 MessageBox.Show(" El Producto se Guardo con Exito");
                 this.Refresh();
@@ -38,22 +39,6 @@ namespace Vista
             }
         }
 
-        private void textBoxPrecioBruto_Validated(object sender, EventArgs e)
-        {
-            if (textBoxPrecioBruto.Text != "")
-            {
-                textBoxPrecioNeto.Text = metodoscomunes.getMontoSinIva(Convert.ToDecimal(textBoxPrecioBruto.Text)).ToString();
-            }
-            
-        }
-
-        private void textBoxPrecioNeto_Validated(object sender, EventArgs e)
-        {
-            if (textBoxPrecioNeto.Text != "")
-            {
-                textBoxPrecioBruto.Text = metodoscomunes.getMontoConIva(Convert.ToDecimal(textBoxPrecioNeto.Text)).ToString();
-            }
-        }
 
         private void buttonSalir_Click(object sender, EventArgs e)
         {
@@ -64,5 +49,6 @@ namespace Vista
         {
 
         }
+
     }
 }

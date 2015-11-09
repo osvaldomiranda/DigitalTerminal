@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Modelo;
+using System.Data.Odbc;
 
 namespace Vista
 {
@@ -17,6 +18,7 @@ namespace Vista
         frmCiudades frmciudad = new frmCiudades();
         frmComunas frmcomuna = new frmComunas();
         ContribuyenteModel clienteM = new ContribuyenteModel();
+        
 
         public frmContribuyente()
         {
@@ -97,9 +99,56 @@ namespace Vista
 
         }
 
+        private void buttonProdCli_Click(object sender, EventArgs e)
+        {
+            if (textBoxRutCliente.Text == "")
+            {
+                MessageBox.Show("Tiene que ingresar el cliente");
+                textBoxRutCliente.Select();
+                textBoxRutCliente.SelectAll();
+            }
+            else
+            {
+                new frmClientePrecio(this).ShowDialog();
+            }
+        }
 
-            
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void buttonBuscar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxRutCliente_KeyPress(object sender, KeyPressEventArgs e)
+        {
         
+            if (e.KeyChar == (char)13)
+            {
+                textBoxRutCliente.Text = new MetodosComunes().formatearRut(textBoxRutCliente.Text);
+                OdbcDataReader reader = clienteM.getClienteReader(textBoxRutCliente.Text);
+                while (reader.Read())
+                {
+                    textBoxRazonSocial.Text = reader.GetString(reader.GetOrdinal("rznSocRecep"));
+                    textBoxGiro.Text = reader.GetString(reader.GetOrdinal("giroRecep"));
+                    textBoxDireccion.Text = reader.GetString(reader.GetOrdinal("dirRecep"));
+                    labelCodComuna.Text = reader.GetString(reader.GetOrdinal("codComuna"));
+                    comboBoxComuna.Text = reader.GetString(reader.GetOrdinal("nomComuna"));
+                    labelCodCiudad.Text = reader.GetInt32(reader.GetOrdinal("codCiudad")).ToString();
+                    comboBoxCiudad.Text = reader.GetString(reader.GetOrdinal("nomCiudad"));
+                    textBoxTelefono.Text = reader.GetString(reader.GetOrdinal("telefono"));
+
+                }
+            }
+        }
 
 
 

@@ -21,7 +21,7 @@ namespace Modelo
 
                 OdbcCommand select = new OdbcCommand();
                 select.Connection = conexion;
-                select.CommandText = "SELECT * FROM tipodte where tipo in(33,34,52,61,801,802,1000) order by nombre";
+                select.CommandText = "SELECT * FROM tipodte where tipo in('33','34','52','61','801','802','1000') order by nombre";
                 OdbcDataReader reader = select.ExecuteReader();
                 datatable.Load(reader);
 
@@ -38,6 +38,40 @@ namespace Modelo
             }
 
             return datatable;
+        }
+
+        public String getNombre(String codDte)
+        {
+            String nombre = String.Empty;
+            SqlConnection sqlcon = new SqlConnection();
+            try
+            {
+                BaseDato con = new BaseDato();
+                OdbcConnection conexion = con.ConnectPostgres();
+
+                OdbcCommand select = new OdbcCommand();
+                select.Connection = conexion;
+                select.CommandText = "SELECT * FROM tipodte where tipo = '"+ codDte +"';";
+                OdbcDataReader reader = select.ExecuteReader();
+                while (reader.Read())
+                {
+                    nombre = reader.GetString(reader.GetOrdinal("nombre"));
+                }
+              
+
+            }
+            catch (Exception ex)
+            {
+           
+                throw new Exception("Error" + ex.Message);
+            }
+
+            finally
+            {
+                sqlcon.Close();
+            }
+
+            return nombre;
         }
     }
 }

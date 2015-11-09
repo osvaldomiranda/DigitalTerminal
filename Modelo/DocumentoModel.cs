@@ -6,6 +6,8 @@ using System.Runtime.Serialization;
 using System.Data.Odbc;
 using System.IO;
 using System.Runtime.Serialization.Json;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace Modelo
 {
@@ -274,23 +276,21 @@ namespace Modelo
 
         public void save(DocumentoModel documento)
         {
-             MemoryStream stream = new MemoryStream();
+            MemoryStream stream = new MemoryStream();
             DataContractJsonSerializer ds = new DataContractJsonSerializer(typeof(DocumentoModel));
             ds.WriteObject(stream, documento);
             string jsonString = Encoding.UTF8.GetString(stream.ToArray());
             stream.Close();
             String json = jsonString.Replace("null", "\"\"");
+            json =  jsonString.Replace("{", "{\"fchcreate\":\"" + DateTime.Now.ToString() + "\",");
             try
             {
                 BaseDato con = new BaseDato();
                 OdbcConnection conexion = con.ConnectPostgres();
                 OdbcCommand select = new OdbcCommand();
                 select.Connection = conexion;
-                select.CommandText = "INSERT INTO documento SELECT * FROM json_populate_record(NULL::documento,'"+json+"')";
-                 
+                select.CommandText = "INSERT INTO documento SELECT * FROM json_populate_record(NULL::documento,'"+ json+"')";                
                 OdbcDataReader reader = select.ExecuteReader();
-
-
             }
             catch (Exception ex)
             {
@@ -301,21 +301,91 @@ namespace Modelo
 
         public void serialize(DocumentoModel documento)
         {
-
-            MemoryStream stream = new MemoryStream();
-            DataContractJsonSerializer ds = new DataContractJsonSerializer(typeof(DocumentoModel));
-            ds.WriteObject(stream, documento);
-            string jsonString = Encoding.UTF8.GetString(stream.ToArray());
-            stream.Close();
-
-            String json = jsonString.Replace("null", "\"\"");  
-
-            String fileNameJson = @"C:/IatFiles/file/"+documento.TipoDTE+"_"+ documento.RUTEmisor + "_" + documento.Folio + ".json";
-
-            using (System.IO.StreamWriter file = new System.IO.StreamWriter(fileNameJson, false, Encoding.GetEncoding("ISO-8859-1")))
+            if (documento.TipoDTE != 802)
             {
-                file.WriteLine(json);
+
+                MemoryStream stream = new MemoryStream();
+                DataContractJsonSerializer ds = new DataContractJsonSerializer(typeof(DocumentoModel));
+                ds.WriteObject(stream, documento);
+                string jsonString = Encoding.UTF8.GetString(stream.ToArray());
+                stream.Close();
+
+                String json = jsonString.Replace("null", "\"\"");
+
+                String fileNameJson = @"C:/IatFiles/file/" + documento.TipoDTE + "_" + documento.RUTEmisor + "_" + documento.Folio + ".json";
+
+                using (System.IO.StreamWriter file = new System.IO.StreamWriter(fileNameJson, false, Encoding.GetEncoding("ISO-8859-1")))
+                {
+                    file.WriteLine(json);
+                }
             }
+        }
+
+        public DocumentoModel getDocumento(int tipo, int folio)
+        {
+            DocumentoModel documentoModel = new DocumentoModel();
+            String documento = String.Empty;
+            try
+            {
+                BaseDato con = new BaseDato();
+                OdbcConnection conexion = con.ConnectPostgres();
+                OdbcCommand select = new OdbcCommand();
+                select.Connection = conexion;
+                select.CommandText = "select row_to_json(documento) from documento where \"Folio\" = " + folio + " and \"TipoDTE\" = '" + tipo + "';";
+                OdbcDataReader reader = select.ExecuteReader();
+                while (reader.Read())
+                {
+                    documento = reader.GetString(reader.GetOrdinal("row_to_json"));
+                }
+
+                DataContractJsonSerializer js = new DataContractJsonSerializer(typeof(DocumentoModel));
+                MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(documento));
+                documentoModel = (DocumentoModel)js.ReadObject(ms);
+                documentoModel.detalle = new Detalle().getDetalle(tipo, folio);
+                documentoModel.Referencia = new ReferenciaDoc().getReferencia(tipo, folio);
+                return documentoModel;
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error" + ex.Message);
+            }
+
+
+            
+        }
+
+        public DataTable getAllDocDT()
+
+        {
+            DataTable datatable = new DataTable();
+            SqlConnection sqlcon = new SqlConnection();
+            try
+            {
+                BaseDato con = new BaseDato();
+                OdbcConnection conexion = con.ConnectPostgres();
+
+                OdbcCommand select = new OdbcCommand();
+                select.Connection = conexion;
+                select.CommandText = "SELECT \"nombre\",\"TipoDTE\",\"Folio\",\"FchEmis\",\"RznSocRecep\",\"MntTotal\""
+                                    +" FROM documento,tipodte "
+                                    + " where  documento.\"TipoDTE\" = tipodte.tipo order by fchcreate DESC LIMIT 50";
+                OdbcDataReader reader = select.ExecuteReader();
+                datatable.Load(reader);
+
+            }
+            catch (Exception ex)
+            {
+                datatable = null;
+                throw new Exception("Error" + ex.Message);
+            }
+
+            finally
+            {
+                sqlcon.Close();
+            }
+
+            return datatable;
 
         }
     }
@@ -397,7 +467,7 @@ namespace Modelo
                 string jsonString = Encoding.UTF8.GetString(stream.ToArray());
                 stream.Close();
                 String json = jsonString.Replace("null", "\"\"");
-                json = jsonString.Replace("{", "{\"FolioDoc\":" + documento.Folio+",");
+                json = jsonString.Replace("{", "{\"FolioDoc\":" + documento.Folio + ", \"TipoDoc\":" + documento.TipoDTE + ",");
 
                 try
                 {
@@ -412,6 +482,36 @@ namespace Modelo
                 {
                     throw new Exception("Error" + ex.Message);
                 } 
+            }
+
+        }
+
+        public List<Detalle> getDetalle(int tipoDoc, int folioDoc)
+        { 
+            List<Detalle> detalles = new List<Detalle>();
+            Detalle detalle = new Detalle();
+            String detalleJson = String.Empty;
+            try
+            {
+                BaseDato con = new BaseDato();
+                OdbcConnection conexion = con.ConnectPostgres();
+                OdbcCommand select = new OdbcCommand();
+                select.Connection = conexion;
+                select.CommandText = "select row_to_json(detalle) from detalle where \"FolioDoc\" = " + folioDoc + " and \"TipoDoc\" = " + tipoDoc + ";";
+                OdbcDataReader reader = select.ExecuteReader();
+                while (reader.Read())
+                {
+                    detalleJson = reader.GetString(reader.GetOrdinal("row_to_json"));
+                    DataContractJsonSerializer js = new DataContractJsonSerializer(typeof(Detalle));
+                    MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(detalleJson));
+                    detalle = (Detalle)js.ReadObject(ms);
+                    detalles.Add(detalle);
+                }
+                return detalles;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error" + ex.Message);
             }
 
         }
@@ -435,7 +535,6 @@ namespace Modelo
         [DataMember]
         public int MntPago { get; set; } //           
     }
-
 
      [DataContract]
   public   class ImptoReten
@@ -465,7 +564,6 @@ namespace Modelo
          public int IndExeDR { get; set; }
 
      }
-
 
      [DataContract]
     public class ReferenciaDoc
@@ -499,15 +597,18 @@ namespace Modelo
                  string jsonString = Encoding.UTF8.GetString(stream.ToArray());
                  stream.Close();
                  String json = jsonString.Replace("null", "\"\"");
-                 json = jsonString.Replace("{", "{\"FolioDoc\":" + documento.Folio + ",");
-
+                 String json0 = json.Replace("{", "{\"FolioDoc\":" + documento.Folio + ", \"TipoDoc\":" + documento.TipoDTE+ ",");
+                 if (det.TpoDocRef == "SET") 
+                     json0 = json0.Replace("\"TpoDocRef\":\"SET\"","\"TpoDocRef\\r\\n\":\"1000\"");
+                 if (det.TpoDocRef == "1000")
+                     json0 = json0.Replace("\"TpoDocRef\":\"1000\"", "\"TpoDocRef\\r\\n\":\"1000\"");
                  try
                  {
                      BaseDato con = new BaseDato();
                      OdbcConnection conexion = con.ConnectPostgres();
                      OdbcCommand select = new OdbcCommand();
                      select.Connection = conexion;
-                     select.CommandText = "INSERT INTO referencia SELECT * FROM json_populate_record(NULL::referencia,'" + json + "')";
+                     select.CommandText = "INSERT INTO referencia SELECT * FROM json_populate_record(NULL::referencia,'" + json0 + "')";
                      OdbcDataReader reader = select.ExecuteReader();
                  }
                  catch (Exception ex)
@@ -517,10 +618,39 @@ namespace Modelo
              }
 
          }
+
+         public List<ReferenciaDoc> getReferencia(int tipoDoc, int folioDoc)
+         {
+             List<ReferenciaDoc> referencias = new List<ReferenciaDoc>();
+             ReferenciaDoc referencia = new ReferenciaDoc();
+             String referenciaJson = String.Empty;
+             try
+             {
+                 BaseDato con = new BaseDato();
+                 OdbcConnection conexion = con.ConnectPostgres();
+                 OdbcCommand select = new OdbcCommand();
+                 select.Connection = conexion;
+                 select.CommandText = "select row_to_json(referencia) from referencia where \"FolioDoc\" = " + folioDoc + " and \"TipoDoc\" = " + tipoDoc + " order by \"NroLinRef\" ASC;";
+                 OdbcDataReader reader = select.ExecuteReader();
+                 while (reader.Read())
+                 {
+                     referenciaJson = reader.GetString(reader.GetOrdinal("row_to_json"));
+                     String referenciaJson1 = referenciaJson.Replace("null", "\"\"");
+                     String referenciaJson2 = referenciaJson1.Replace("\"TpoDocRef\\r\\n", "\"TpoDocRef");
+                     DataContractJsonSerializer js = new DataContractJsonSerializer(typeof(ReferenciaDoc));
+                     MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(referenciaJson2));
+                     referencia = (ReferenciaDoc)js.ReadObject(ms);
+                     referencias.Add(referencia);
+                 }
+                 return referencias;
+             }
+             catch (Exception ex)
+             {
+                 throw new Exception("Error" + ex.Message);
+             }
+
+         }
      }
-
-
-
 
      [DataContract]
    public  class Comisiones

@@ -15,6 +15,8 @@ namespace Modelo
         public String codigoInt { get; set; }
         public decimal precioNeto { get; set; }
         public Int32 precioventa { get; set; }
+        public string exento { get; set; }
+        List<Impuesto> impuesto { get; set; }
 
         public ProductosModel()
         {
@@ -134,14 +136,16 @@ namespace Modelo
                                     +"nombre, "
                                     +"\"codigoInt\", "
                                     +"\"precioNeto\", "
-                                    +"\"precioVenta\""
+                                    +"\"precioVenta\","
+                                    + "\"exento\""
                                    //+"codimpuesto "
                                     +") VALUES ('"
                                     //+ producto.id +",'"//"id, "
                                     + producto.nombre + "','"//"nombre, "
                                     + producto.codigoInt + "',"//"\"codigoInt\", "
                                     + producto.precioNeto + ","//"\"precioNeto\", "
-                                    + producto.precioventa + ""//"\"precioVenta\", "
+                                    + producto.precioventa + ",'"//"\"precioVenta\", "
+                                    + producto.exento + "'"//"\"precioVenta\", "
                                    // + "codimpuesto "
                                     +");";
                 OdbcDataReader reader = select.ExecuteReader();
@@ -152,6 +156,23 @@ namespace Modelo
             }
         }
 
+
+
         
+    }
+
+    public class Impuesto
+    {
+        Int32 codImpuesto { get; set; }
+        Int32 codProducto { get; set; }
+        string nomimpuesto { get; set; }
+        float valorimpuesto {get; set;}
+
+        public Impuesto get(int codProducto)
+        {
+
+
+            return this;
+        }
     }
 }
